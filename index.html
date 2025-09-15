@@ -1,49 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="light">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liberte-se da Ansiedade - Transforme Sua Vida Hoje</title>
     
-    <!-- DNS Prefetch for faster resource loading -->
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <!-- DNS Prefetch e Preconnect para Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
-    <!-- Preconnect for critical third-party origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Preload critical resources -->
+    <!-- Preload Critical Resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <!-- Materialize CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></noscript>
+    
+    <!-- Material Icons -->
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+    
+    <!-- Font Awesome -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- Critical CSS loaded synchronously -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Non-critical CSS loaded asynchronously -->
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
     <style>
+        /* Critical CSS Inline */
         * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
-        .hero-parallax {
+        /* Hero Section */
+        .hero-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         
-        .hero-parallax::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -52,45 +54,18 @@
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="200" fill="url(%23a)"/><circle cx="400" cy="700" r="180" fill="url(%23a)"/></svg>') center/cover;
             animation: float 20s ease-in-out infinite;
+            will-change: transform;
         }
         
-        .stats-animated {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .stat-card {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            animation: fadeInScale 1s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.9);
-            border-radius: 1rem;
-        }
-        
-        @keyframes fadeInScale {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
+        /* Animations with GPU acceleration */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        .pulse-btn {
-            animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
@@ -99,66 +74,16 @@
             100% { transform: scale(1); }
         }
         
-        .whatsapp-message {
-            max-width: 280px;
-            margin: 10px;
-            padding: 12px 16px;
-            border-radius: 18px;
-            position: relative;
-            word-wrap: break-word;
-        }
-        
-        .message-received {
-            background: #f8f9fa;
-            border-bottom-left-radius: 4px;
-            margin-left: 0;
-            margin-right: auto;
-        }
-        
-        .message-sent {
-            background: #d1e7dd;
-            border-bottom-right-radius: 4px;
-            margin-left: auto;
-            margin-right: 0;
-        }
-        
-        .message-time {
-            font-size: 11px;
-            color: #6c757d;
-            margin-top: 4px;
-            text-align: right;
-        }
-        
-        .carousel-custom {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            background: #f8f9fa;
-            max-width: 400px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            padding: 20px;
-        }
-        
-        .animated-bullet {
-            display: inline-block;
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -166,637 +91,339 @@
             }
         }
         
-        .guarantee-badge {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .guarantee-badge::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-            border-radius: inherit;
-            z-index: -1;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .stat-counter {
-            font-weight: 700;
-            color: #6f42c1;
-            animation: countUp 2s ease-out forwards;
-        }
-        
-        @keyframes countUp {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        
-        .micro-interaction {
-            transition: all 0.2s ease;
-        }
-        
-        .micro-interaction:hover {
-            transform: translateY(-2px);
-        }
-        
-        .trust-badge {
-            animation: trustFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes trustFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .urgency-timer {
-            background: linear-gradient(45deg, #dc3545, #b02a37);
-            animation: urgencyPulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes urgencyPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
-        }
-        
-        .social-proof-popup {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1050;
-            max-width: 280px;
-            animation: slideInLeft 0.5s ease-out;
-        }
-        
         @keyframes slideInLeft {
             from { transform: translateX(-100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         
-        .one-click-buy {
-            background: linear-gradient(135deg, #fd7e14, #f59e0b);
-            color: white;
-            border: 3px solid #ffffff;
-            box-shadow: 0 10px 25px rgba(253, 126, 20, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            font-weight: 800;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.5px;
+        /* Enhanced Performance Styles */
+        .pulse-btn {
+            animation: pulse 2s infinite;
+            will-change: transform;
         }
         
-        .one-click-buy:hover {
-            background: linear-gradient(135deg, #e85d04, #d97706);
-            box-shadow: 0 15px 35px rgba(253, 126, 20, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px) scale(1.02);
-            border-color: #fff;
-            color: white;
+        .stats-animated {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            will-change: background-position;
         }
         
-        .one-click-buy:active {
-            transform: translateY(-1px) scale(0.98);
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeInUp 1s ease-out forwards;
+            will-change: opacity, transform;
         }
         
-        .benefit-stack {
+        .animated-bullet {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            will-change: opacity, transform;
+        }
+        
+        /* WhatsApp Style Messages */
+        .whatsapp-container {
+            background: #e5ddd5;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-message {
+            max-width: 280px;
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 18px;
             position: relative;
+            word-wrap: break-word;
+            animation: fadeInUp 0.5s ease-out forwards;
         }
         
-        .benefit-stack::after {
-            content: "✓";
-            position: absolute;
-            right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #198754;
-            font-size: 20px;
-            font-weight: bold;
+        .message-received {
+            background: #f0f0f0;
+            border-bottom-left-radius: 4px;
+            float: left;
+            clear: both;
         }
         
-        .carousel-indicators button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        .message-sent {
+            background: #dcf8c6;
+            border-bottom-right-radius: 4px;
+            float: right;
+            clear: both;
         }
         
-        @media (max-width: 768px) {
+        .message-time {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+            text-align: right;
+        }
+        
+        /* CTA Button Enhanced */
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+            border: 3px solid #ffffff !important;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            transition: all 0.3s ease !important;
+            font-weight: 800 !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+            letter-spacing: 0.5px !important;
+            will-change: transform, box-shadow;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #e55a2b, #e8851a) !important;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            transform: translateY(-3px) scale(1.02) !important;
+        }
+        
+        /* Social Proof Popup */
+        .social-proof-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 280px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-left: 4px solid #4caf50;
+            animation: slideInLeft 0.5s ease-out;
+            will-change: transform;
+            display: none;
+        }
+        
+        /* Urgency Timer */
+        .urgency-timer {
+            background: linear-gradient(45deg, #ff4757, #ff3742);
+            animation: urgencyPulse 1.5s ease-in-out infinite;
+            will-change: box-shadow;
+        }
+        
+        @keyframes urgencyPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+        }
+        
+        /* Carousel Optimizations */
+        .testimonial-carousel {
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        
+        /* Responsive Optimizations */
+        @media (max-width: 992px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
             .social-proof-popup {
                 bottom: 10px;
                 left: 10px;
                 right: 10px;
-                max-width: 280px;
-                margin: 0 auto;
+                max-width: none;
             }
             
-            .hero-parallax h1 {
-                font-size: 2.5rem;
+            .whatsapp-message {
+                max-width: 240px;
+                font-size: 0.875rem;
             }
+        }
+        
+        /* Performance Optimizations */
+        .lazy-load {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="hero-parallax d-flex align-items-center justify-content-center text-white position-relative">
-        <div class="container text-center position-relative" style="z-index: 10;">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h1 class="display-1 fw-bold mb-4 lh-1">
-                        Liberte-se da <span class="text-warning">Ansiedade</span> 
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align hero-content">
+                    <h1 class="white-text" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">
+                        Liberte-se da <span style="color: #ffeb3b;">Ansiedade</span>
                         <br>Transforme Sua Vida
                     </h1>
-                    <p class="fs-4 mb-4 opacity-75 mx-auto" style="max-width: 800px;">
-                        Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade e recuperarem o controle total de suas vidas
+                    <p class="white-text" style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade
                     </p>
                     
-                    <!-- Trust indicators -->
-                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-4 text-warning">
-                        <div class="d-flex align-items-center trust-badge me-md-4 mb-2 mb-md-0">
-                            <i class="fas fa-star me-1"></i>
-                            <span class="small fw-semibold">4.9/5 (2.847 avaliações)</span>
-                        </div>
-                        <div class="d-flex align-items-center trust-badge me-md-4 mb-2 mb-md-0">
-                            <i class="fas fa-users me-1"></i>
-                            <span class="small fw-semibold">+10.000 alunos</span>
-                        </div>
-                        <div class="d-flex align-items-center trust-badge">
-                            <i class="fas fa-medal me-1"></i>
-                            <span class="small fw-semibold">Método científico</span>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center align-items-center">
-                        <button class="btn btn-warning btn-lg pulse-btn fw-bold shadow" onclick="scrollToPricing()">
-                            <i class="fas fa-rocket me-2"></i>
-                            <span class="d-none d-sm-inline">QUERO TRANSFORMAR MINHA VIDA AGORA</span>
-                            <span class="d-sm-none">TRANSFORMAR MINHA VIDA</span>
-                        </button>
-                        <div class="guarantee-badge bg-white text-dark px-4 py-2 rounded-pill fw-semibold small">
-                            <i class="fas fa-shield-alt text-success me-2"></i>
-                            Garantia de 7 dias
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
-            <i class="fas fa-chevron-down fs-2 opacity-75" style="animation: bounce 2s infinite;"></i>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold text-dark mb-4">
-                    Você Reconhece Estes Sinais?
-                </h2>
-                <p class="fs-5 text-muted mx-auto" style="max-width: 600px;">
-                    A ansiedade pode estar roubando os melhores momentos da sua vida...
-                </p>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow border-0">
-                        <div class="card-body text-center">
-                            <i class="fas fa-heart-broken display-4 text-danger mb-3"></i>
-                            <h5 class="card-title text-dark">Coração Acelerado</h5>
-                            <p class="card-text text-muted">Palpitações constantes que parecem não ter fim</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow border-0">
-                        <div class="card-body text-center">
-                            <i class="fas fa-bed display-4 text-primary mb-3"></i>
-                            <h5 class="card-title text-dark">Noites em Claro</h5>
-                            <p class="card-text text-muted">Insônia e pensamentos que não param de girar</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow border-0">
-                        <div class="card-body text-center">
-                            <i class="fas fa-users-slash display-4 text-secondary mb-3"></i>
-                            <h5 class="card-title text-dark">Isolamento Social</h5>
-                            <p class="card-text text-muted">Evitar situações sociais por medo e insegurança</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold text-dark mb-4">
-                    A Solução Que Você Estava Procurando
-                </h2>
-                <p class="fs-5 text-muted mx-auto mb-5" style="max-width: 600px;">
-                    Nosso método revolucionário combina técnicas comprovadas pela ciência
-                </p>
-            </div>
-            
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6">
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <div class="animated-bullet me-3" style="animation-delay: 0.1s;">
-                                    <i class="fas fa-check-circle fs-3 text-success mt-1"></i>
-                                </div>
-                                <div class="animated-bullet" style="animation-delay: 0.2s;">
-                                    <h5 class="fw-semibold text-dark">Técnicas de Respiração Avançadas</h5>
-                                    <p class="text-muted">Aprenda a controlar sua ansiedade em segundos</p>
-                                </div>
+                    <!-- Trust Indicators -->
+                    <div class="row" style="margin-bottom: 2rem;">
+                        <div class="col s12 m4">
+                            <div class="white-text">
+                                <i class="material-icons left">security</i>
+                                <span>Garantia de 7 dias</span>
                             </div>
                         </div>
-                        
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <div class="animated-bullet me-3" style="animation-delay: 0.3s;">
-                                    <i class="fas fa-check-circle fs-3 text-success mt-1"></i>
-                                </div>
-                                <div class="animated-bullet" style="animation-delay: 0.4s;">
-                                    <h5 class="fw-semibold text-dark">Reestruturação Cognitiva</h5>
-                                    <p class="text-muted">Mude os padrões de pensamento que geram ansiedade</p>
-                                </div>
+                        <div class="col s12 m4">
+                            <div class="white-text">
+                                <i class="material-icons left">flash_on</i>
+                                <span>Acesso imediato</span>
                             </div>
                         </div>
-                        
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <div class="animated-bullet me-3" style="animation-delay: 0.5s;">
-                                    <i class="fas fa-check-circle fs-3 text-success mt-1"></i>
-                                </div>
-                                <div class="animated-bullet" style="animation-delay: 0.6s;">
-                                    <h5 class="fw-semibold text-dark">Mindfulness Prático</h5>
-                                    <p class="text-muted">Viva o presente sem se preocupar com o futuro</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12">
-                            <div class="d-flex align-items-start">
-                                <div class="animated-bullet me-3" style="animation-delay: 0.7s;">
-                                    <i class="fas fa-check-circle fs-3 text-success mt-1"></i>
-                                </div>
-                                <div class="animated-bullet" style="animation-delay: 0.8s;">
-                                    <h5 class="fw-semibold text-dark">Plano de Ação Personalizado</h5>
-                                    <p class="text-muted">Um roteiro claro para sua jornada de cura</p>
-                                </div>
+                        <div class="col s12 m4">
+                            <div class="white-text">
+                                <i class="material-icons left">all_inclusive</i>
+                                <span>Acesso vitalício</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="position-relative">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%23f0f0f0'/><text x='50%' y='50%' font-size='18' text-anchor='middle' dy='.3em' fill='%23666'>Imagem do Produto</text></svg>" alt="Produto" class="img-fluid rounded shadow-lg">
-                        <div class="position-absolute top-0 end-0 translate-middle-x bg-danger text-white px-3 py-2 rounded-pill fw-bold" style="animation: pulse 2s infinite;">
-                            50% OFF
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-5 stats-animated text-white position-relative overflow-hidden">
-        <div class="container position-relative" style="z-index: 10;">
-            <div class="row g-4 text-center">
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card p-4 rounded" style="animation-delay: 0.1s;">
-                        <div class="stat-counter display-4 fw-bold mb-2 text-white">10,000+</div>
-                        <p class="fs-6 fw-semibold text-white">Vidas Transformadas</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card p-4 rounded" style="animation-delay: 0.2s;">
-                        <div class="stat-counter display-4 fw-bold mb-2 text-white">95%</div>
-                        <p class="fs-6 fw-semibold text-white">Taxa de Sucesso</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card p-4 rounded" style="animation-delay: 0.3s;">
-                        <div class="stat-counter display-4 fw-bold mb-2 text-white">30</div>
-                        <p class="fs-6 fw-semibold text-white">Dias para Ver Resultados</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card p-4 rounded" style="animation-delay: 0.4s;">
-                        <div class="stat-counter display-4 fw-bold mb-2 text-white">24/7</div>
-                        <p class="fs-6 fw-semibold text-white">Suporte Disponível</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold text-dark mb-4">
-                    O Que Nossos Clientes Dizem
-                </h2>
-                <p class="fs-5 text-muted">Resultados reais de pessoas reais</p>
-            </div>
-            
-            <div class="carousel-custom mx-auto">
-                <div class="carousel-track" id="testimonialCarousel">
-                    <div class="carousel-slide">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
-                                <span class="text-white fw-bold">M</span>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-0">Maria Silva</h6>
-                                <p class="small text-muted mb-0">Online agora</p>
-                            </div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">Gente, não acredito! 😭</p>
-                            <div class="message-time">14:32</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
-                            <div class="message-time">14:32</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received">
-                            <p class="small mb-0">Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava! 🚀✨</p>
-                            <div class="message-time">14:33</div>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
-                                <span class="text-white fw-bold">J</span>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-0">João Santos</h6>
-                                <p class="small text-muted mb-0">Online agora</p>
-                            </div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">Cara, esse método é INCRÍVEL! 🔥</p>
-                            <div class="message-time">15:45</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">2 meses sem crise de ansiedade! Pela primeira vez em anos durmo a noite toda 😴</p>
-                            <div class="message-time">15:46</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received">
-                            <p class="small mb-0">Obrigado por devolver minha vida! 🙏❤️</p>
-                            <div class="message-time">15:46</div>
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle bg-success d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
-                                <span class="text-white fw-bold">A</span>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-0">Ana Costa</h6>
-                                <p class="small text-muted mb-0">Online agora</p>
-                            </div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">Pessoal, precisava compartilhar isso! 💕</p>
-                            <div class="message-time">16:20</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received mb-2">
-                            <p class="small mb-0">Depois de anos fazendo terapia, encontrei neste curso o que precisava</p>
-                            <div class="message-time">16:21</div>
-                        </div>
-                        
-                        <div class="whatsapp-message message-received">
-                            <p class="small mb-0">Hoje fui na apresentação da empresa e mandei bem! Antes eu tremia só de pensar 💪✨</p>
-                            <div class="message-time">16:21</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="d-flex justify-content-center mt-3">
-                    <button class="carousel-dot btn btn-sm rounded-circle bg-secondary me-2" onclick="goToSlide(0)" style="width: 12px; height: 12px;"></button>
-                    <button class="carousel-dot btn btn-sm rounded-circle bg-secondary me-2" onclick="goToSlide(1)" style="width: 12px; height: 12px;"></button>
-                    <button class="carousel-dot btn btn-sm rounded-circle bg-secondary" onclick="goToSlide(2)" style="width: 12px; height: 12px;"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #fd7e14, #dc3545);">
-        <!-- Urgency Timer -->
-        <div class="urgency-timer text-center py-2 mb-4">
-            <div class="container">
-                <p class="small fw-semibold mb-0">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" class="fw-bold">23:45:12</span></p>
-            </div>
-        </div>
-        
-        <div class="container text-center">
-            <h2 class="display-3 fw-bold mb-4">
-                Não Deixe a Ansiedade Controlar Sua Vida
-            </h2>
-            <p class="fs-4 mb-4 opacity-75 mx-auto" style="max-width: 700px;">
-                Junte-se a milhares de pessoas que já transformaram suas vidas. Sua nova realidade está a um clique de distância.
-            </p>
-            
-            <div class="bg-white text-dark p-4 rounded-3 mx-auto mb-4" id="pricing-section" style="max-width: 400px;">
-                <div class="display-6 fw-bold text-danger text-decoration-line-through mb-2">R$ 347</div>
-                <div class="display-4 fw-bold text-success mb-3">R$ 47</div>
-                <p class="small text-muted">Oferta por tempo limitado</p>
-                
-                <!-- Value Stack -->
-                <div class="mt-3 text-start">
-                    <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i><small>Acesso vitalício</small></div>
-                    <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i><small>Suporte 24/7</small></div>
-                    <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i><small>Certificado incluso</small></div>
-                    <div class="d-flex align-items-center"><i class="fas fa-check text-success me-2"></i><small>Garantia 7 dias</small></div>
-                </div>
-            </div>
-            
-            <!-- One-Click Purchase -->
-            <div class="mb-4">
-                <button class="one-click-buy btn btn-lg pulse-btn fs-5 fw-bold px-5 py-3 rounded-pill border-0 w-100" style="max-width: 500px;">
-                    <i class="fas fa-credit-card me-2"></i>
-                    COMPRAR AGORA - 86% OFF
-                </button>
-                
-                <!-- Multiple Payment Options -->
-                <div class="d-flex justify-content-center align-items-center mt-3 small opacity-75">
-                    <span class="d-flex align-items-center">💳 <span class="ms-1">Cartão</span></span>
-                    <span class="text-white-50 mx-3">|</span>
-                    <span class="d-flex align-items-center">📱 <span class="ms-1">PIX</span></span>
-                </div>
-            </div>
-            
-            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-4">
-                <div class="d-flex align-items-center micro-interaction mb-2 mb-md-0 me-md-4">
-                    <i class="fas fa-shield-alt fs-4 text-warning me-2"></i>
-                    <span class="fw-semibold">Garantia de 7 dias</span>
-                </div>
-                <div class="d-flex align-items-center micro-interaction mb-2 mb-md-0 me-md-4">
-                    <i class="fas fa-bolt fs-4 text-warning me-2"></i>
-                    <span class="fw-semibold">Acesso imediato</span>
-                </div>
-                <div class="d-flex align-items-center micro-interaction">
-                    <i class="fas fa-infinity fs-4 text-warning me-2"></i>
-                    <span class="fw-semibold">Acesso vitalício</span>
                 </div>
             </div>
             
             <!-- Social Proof -->
-            <div class="bg-white bg-opacity-25 backdrop-blur rounded-3 p-3 mx-auto" style="max-width: 600px;">
-                <p class="mb-2">⭐⭐⭐⭐⭐ "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva</p>
-                <p class="small opacity-75 mb-0">Mais de 847 pessoas compraram nas últimas 24 horas</p>
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="card-panel" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 15px;">
+                        <div class="white-text center-align">
+                            <div style="margin-bottom: 0.5rem;">
+                                <i class="material-icons tiny">star</i>
+                                <i class="material-icons tiny">star</i>
+                                <i class="material-icons tiny">star</i>
+                                <i class="material-icons tiny">star</i>
+                                <i class="material-icons tiny">star</i>
+                                "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva
+                            </div>
+                            <small style="opacity: 0.8;">Mais de 847 pessoas compraram nas últimas 24 horas</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-5 bg-light">
+    <section class="section grey lighten-4 lazy-load">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold text-dark mb-4">
-                    Perguntas Frequentes
-                </h2>
-                <p class="fs-5 text-muted">Tire todas as suas dúvidas</p>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h2 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem;">
+                        Perguntas Frequentes
+                    </h2>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+                        Tire todas as suas dúvidas
+                    </p>
+                </div>
             </div>
             
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion accordion-flush" id="faqAccordion">
-                        <div class="accordion-item bg-white shadow-sm rounded mb-3 border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    <i class="fas fa-clock text-primary me-3"></i>
-                                    Em quanto tempo vejo resultados?
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    A maioria dos nossos alunos relatam melhorias significativas já nas primeiras semanas. O método é projetado para oferecer técnicas de alívio imediato, enquanto trabalha mudanças profundas e duradouras. Você terá acesso a exercícios práticos que podem ser aplicados imediatamente.
-                                </div>
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <!-- FAQ Collapsible -->
+                    <ul class="collapsible">
+                        <li class="active">
+                            <div class="collapsible-header">
+                                <i class="material-icons blue-text">access_time</i>
+                                Em quanto tempo vejo resultados?
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-white shadow-sm rounded mb-3 border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    <i class="fas fa-mobile-alt text-success me-3"></i>
-                                    Como funciona o acesso ao curso?
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Após a compra, você recebe acesso imediato à plataforma online. O curso pode ser acessado 24/7 de qualquer dispositivo - computador, tablet ou celular. Todo o conteúdo fica disponível para você para sempre, permitindo revisar sempre que precisar.
-                                </div>
+                            <div class="collapsible-body">
+                                <span>A maioria dos nossos alunos relatam melhorias significativas já nas primeiras semanas. O método é projetado para oferecer técnicas de alívio imediato, enquanto trabalha mudanças profundas e duradouras. Você terá acesso a exercícios práticos que podem ser aplicados imediatamente.</span>
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-white shadow-sm rounded mb-3 border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    <i class="fas fa-shield-alt text-warning me-3"></i>
-                                    Como funciona a garantia de 7 dias?
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Nossa garantia é simples e sem complicações. Se em 7 dias você não sentir que o curso está te ajudando, basta enviar um e-mail e devolvemos 100% do valor investido. Não fazemos perguntas e o reembolso é processado em até 48 horas.
-                                </div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons green-text">smartphone</i>
+                                Como funciona o acesso ao curso?
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-white shadow-sm rounded mb-3 border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    <i class="fas fa-user-md text-danger me-3"></i>
-                                    Preciso parar meu tratamento médico?
-                                </button>
-                            </h2>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    De forma alguma! Nosso curso é complementar ao acompanhamento médico e psicológico. Sempre incentivamos que você mantenha seu tratamento profissional. As técnicas ensinadas são baseadas em evidências científicas e servem como ferramentas adicionais para seu bem-estar.
-                                </div>
+                            <div class="collapsible-body">
+                                <span>Após a compra, você recebe acesso imediato à plataforma online. O curso pode ser acessado 24/7 de qualquer dispositivo - computador, tablet ou celular. Todo o conteúdo fica disponível para você para sempre, permitindo revisar sempre que precisar.</span>
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-white shadow-sm rounded mb-3 border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                    <i class="fas fa-graduation-cap text-info me-3"></i>
-                                    Preciso de conhecimento prévio?
-                                </button>
-                            </h2>
-                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Não é necessário nenhum conhecimento prévio! O curso foi desenvolvido para pessoas comuns, com linguagem clara e exercícios práticos. Começamos do básico e evoluímos gradualmente, sempre com exemplos reais e aplicações do dia a dia.
-                                </div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons purple-text">security</i>
+                                Como funciona a garantia de 7 dias?
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-white shadow-sm rounded border-0">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                                    <i class="fas fa-headset text-secondary me-3"></i>
-                                    Terei suporte durante o curso?
-                                </button>
-                            </h2>
-                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Sim! Oferecemos suporte completo via WhatsApp e e-mail. Nossa equipe está preparada para tirar dúvidas sobre o conteúdo e te apoiar durante toda sua jornada. Também temos uma comunidade exclusiva onde você pode compartilhar experiências com outros alunos.
-                                </div>
+                            <div class="collapsible-body">
+                                <span>Nossa garantia é simples e sem complicações. Se em 7 dias você não sentir que o curso está te ajudando, basta enviar um e-mail e devolvemos 100% do valor investido. Não fazemos perguntas e o reembolso é processado em até 48 horas.</span>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons red-text">local_hospital</i>
+                                Preciso parar meu tratamento médico?
+                            </div>
+                            <div class="collapsible-body">
+                                <span>De forma alguma! Nosso curso é complementar ao acompanhamento médico e psicológico. Sempre incentivamos que você mantenha seu tratamento profissional. As técnicas ensinadas são baseadas em evidências científicas e servem como ferramentas adicionais para seu bem-estar.</span>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons orange-text">school</i>
+                                Preciso de conhecimento prévio?
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Não é necessário nenhum conhecimento prévio! O curso foi desenvolvido para pessoas comuns, com linguagem clara e exercícios práticos. Começamos do básico e evoluímos gradualmente, sempre com exemplos reais e aplicações do dia a dia.</span>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons teal-text">headset_mic</i>
+                                Terei suporte durante o curso?
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Sim! Oferecemos suporte completo via WhatsApp e e-mail. Nossa equipe está preparada para tirar dúvidas sobre o conteúdo e te apoiar durante toda sua jornada. Também temos uma comunidade exclusiva onde você pode compartilhar experiências com outros alunos.</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Guarantee Section -->
-    <section class="py-5 bg-white">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="border border-success border-2 p-1 rounded-3 mb-4" style="background: linear-gradient(135deg, #198754, #20c997);">
-                        <div class="bg-white p-4 rounded-2">
-                            <i class="fas fa-shield-check display-4 text-success mb-3"></i>
-                            <h2 class="display-5 fw-bold text-dark mb-3">
+    <section class="section white lazy-load">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="card-panel" style="background: linear-gradient(135deg, #4caf50, #2196f3); border-radius: 20px;">
+                        <div class="card-content white-text center-align">
+                            <i class="material-icons" style="font-size: 4rem; margin-bottom: 1rem;">verified_user</i>
+                            <h4 style="font-weight: 600; margin-bottom: 1rem;">
                                 Garantia Incondicional de 7 Dias
-                            </h2>
-                            <p class="fs-6 text-muted mb-3">
+                            </h4>
+                            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
                                 Estamos tão confiantes no nosso método que oferecemos uma garantia total. 
                                 Se em 7 dias você não sentir uma melhora significativa na sua ansiedade, 
                                 devolvemos 100% do seu dinheiro, sem perguntas.
                             </p>
-                            <div class="alert alert-warning border-start border-warning border-4 bg-warning bg-opacity-10">
-                                <p class="text-warning-emphasis fw-semibold mb-0">
-                                    ⚡ Sem riscos para você. Todo o risco é nosso!
+                            <div class="card-panel yellow lighten-4" style="border-left: 4px solid #ffc107; margin: 0;">
+                                <p style="color: #f57f17; font-weight: 600; margin: 0;">
+                                    <i class="material-icons tiny">flash_on</i>
+                                    Sem riscos para você. Todo o risco é nosso!
                                 </p>
                             </div>
                         </div>
@@ -807,136 +434,145 @@
     </section>
 
     <!-- Social Proof Popup -->
-    <div class="social-proof-popup bg-white rounded-3 shadow-lg p-3 border-start border-success border-4" id="socialProof" style="display: none;">
-        <div class="d-flex align-items-center">
-            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                <i class="fas fa-user text-white"></i>
+    <div class="social-proof-popup" id="socialProof">
+        <div class="card-panel" style="margin: 0; padding: 15px;">
+            <div class="row valign-wrapper" style="margin: 0;">
+                <div class="col s3">
+                    <div class="circle green center-align white-text" style="width: 40px; height: 40px; line-height: 40px;">
+                        <i class="material-icons small">person</i>
+                    </div>
+                </div>
+                <div class="col s8">
+                    <p style="margin: 0; font-weight: 600; font-size: 0.9rem;" id="proofName">Maria Silva</p>
+                    <p style="margin: 0; font-size: 0.8rem; color: #666;" id="proofAction">acabou de comprar o curso</p>
+                    <p style="margin: 0; font-size: 0.7rem; color: #4caf50;" id="proofLocation">há 3 minutos - São Paulo, SP</p>
+                </div>
+                <div class="col s1">
+                    <a href="#!" onclick="hideSocialProof()" class="grey-text">
+                        <i class="material-icons tiny">close</i>
+                    </a>
+                </div>
             </div>
-            <div class="flex-grow-1">
-                <p class="small fw-semibold text-dark mb-0" id="proofName">Maria Silva</p>
-                <p class="small text-muted mb-0" id="proofAction">acabou de comprar o curso</p>
-                <p class="small text-success mb-0">há 3 minutos - São Paulo, SP</p>
-            </div>
-            <button class="btn-close" onclick="hideSocialProof()" aria-label="Close"></button>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <h5 class="fw-bold mb-3">Liberte-se da Ansiedade</h5>
-            <p class="mb-3 opacity-75">Transformando vidas através do conhecimento</p>
-            
-            <div class="d-flex justify-content-center mb-3">
-                <a href="#" class="text-white fs-4 me-3 text-decoration-none">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-white fs-4 me-3 text-decoration-none">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="text-white fs-4 text-decoration-none">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+    <footer class="page-footer grey darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h5 class="white-text">Liberte-se da Ansiedade</h5>
+                    <p class="grey-text text-lighten-4">Transformando vidas através do conhecimento</p>
+                    
+                    <div style="margin: 2rem 0;">
+                        <a href="#!" class="white-text" style="margin: 0 1rem; font-size: 2rem;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#!" class="white-text" style="margin: 0 1rem; font-size: 2rem;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#!" class="white-text" style="margin: 0 1rem; font-size: 2rem;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="small opacity-50">
-                <p class="mb-1">© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
-                <p class="mb-0">Este produto não substitui acompanhamento médico profissional.</p>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center-align">
+                <div class="grey-text text-lighten-4">
+                    <p>© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
+                    <p style="font-size: 0.9rem;">Este produto não substitui acompanhamento médico profissional.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Preload Bootstrap JS for better performance -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" as="script">
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Materialize JavaScript with async loading -->
     <script>
-        // Performance optimization: Load scripts after page load
-        window.addEventListener('load', function() {
-            // Carousel functionality
-            let currentSlide = 0;
-            const totalSlides = 3;
-            const carousel = document.getElementById('testimonialCarousel');
-            const dots = document.querySelectorAll('.carousel-dot');
+        // Load Materialize JS asynchronously
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = callback;
+            document.head.appendChild(script);
+        }
+        
+        // Load Materialize after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', function() {
+                // Initialize Materialize components
+                M.Collapsible.init(document.querySelectorAll('.collapsible'));
+                M.AutoInit();
+            });
+        });
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 2;
+        const carousel = document.getElementById('testimonialCarousel');
+        const dots = document.querySelectorAll('.carousel-dot');
 
-            function updateCarousel() {
-                if (!carousel) return;
+        function updateCarousel() {
+            if (carousel) {
                 carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
                 
                 dots.forEach((dot, index) => {
                     if (index === currentSlide) {
-                        dot.classList.remove('bg-secondary');
-                        dot.classList.add('bg-primary');
+                        dot.classList.remove('grey');
+                        dot.classList.add('blue');
                     } else {
-                        dot.classList.remove('bg-primary');
-                        dot.classList.add('bg-secondary');
+                        dot.classList.remove('blue');
+                        dot.classList.add('grey');
                     }
                 });
             }
+        }
 
-            window.goToSlide = function(slideIndex) {
-                currentSlide = slideIndex;
-                updateCarousel();
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateCarousel();
-            }
-
-            // Auto-advance carousel
-            setInterval(nextSlide, 5000);
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
             updateCarousel();
+        }
 
-            // Intersection Observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const bullets = entry.target.querySelectorAll('.animated-bullet');
-                        bullets.forEach((bullet, index) => {
-                            setTimeout(() => {
-                                bullet.style.animation = `fadeInUp 0.6s ease-out forwards`;
-                            }, index * 100);
-                        });
-                    }
-                });
-            }, observerOptions);
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+        updateCarousel();
 
-            document.querySelectorAll('section').forEach(section => {
-                if (section.querySelector('.animated-bullet')) {
-                    observer.observe(section);
+        // Lazy loading with Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                    
+                    // Animate bullets
+                    const bullets = entry.target.querySelectorAll('.animated-bullet');
+                    bullets.forEach((bullet, index) => {
+                        setTimeout(() => {
+                            bullet.style.opacity = '1';
+                            bullet.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    });
                 }
             });
+        }, observerOptions);
 
-            // Stats animation observer
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const statCards = entry.target.querySelectorAll('.stat-card');
-                        statCards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.style.animationDelay = `${index * 0.1}s`;
-                                card.classList.add('animate');
-                            }, index * 100);
-                        });
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            const statsSection = document.querySelector('.stats-animated');
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
+        // Observe lazy-load elements
+        document.querySelectorAll('.lazy-load').forEach(el => {
+            observer.observe(el);
         });
 
-        // Critical functions that need to be available immediately
+        // Countdown Timer
         function updateCountdown() {
             const hours = Math.floor(Math.random() * 2) + 22;
             const minutes = Math.floor(Math.random() * 60);
@@ -948,30 +584,31 @@
             }
         }
 
-        // Social Proof system
+        // Social Proof System
         const socialProofNames = [
             'Maria Silva', 'João Santos', 'Ana Costa', 'Pedro Lima', 'Carla Souza',
-            'Lucas Oliveira', 'Fernanda Rocha', 'Rafael Nunes', 'Juliana Alves', 'Marcos Pereira'
+            'Lucas Oliveira', 'Fernanda Rocha', 'Rafael Nunes', 'Juliana Alves'
         ];
 
         const socialProofCities = [
             'São Paulo, SP', 'Rio de Janeiro, RJ', 'Belo Horizonte, MG', 'Salvador, BA',
-            'Fortaleza, CE', 'Brasília, DF', 'Curitiba, PR', 'Recife, PE', 'Porto Alegre, RS'
+            'Fortaleza, CE', 'Brasília, DF', 'Curitiba, PR', 'Recife, PE'
         ];
 
         function showSocialProof() {
             const popup = document.getElementById('socialProof');
             const nameEl = document.getElementById('proofName');
             const actionEl = document.getElementById('proofAction');
+            const locationEl = document.getElementById('proofLocation');
             
-            if (popup && nameEl && actionEl) {
+            if (popup && nameEl && actionEl && locationEl) {
                 const randomName = socialProofNames[Math.floor(Math.random() * socialProofNames.length)];
                 const randomCity = socialProofCities[Math.floor(Math.random() * socialProofCities.length)];
                 const randomMinutes = Math.floor(Math.random() * 10) + 1;
                 
                 nameEl.textContent = randomName;
                 actionEl.textContent = 'acabou de comprar o curso';
-                popup.querySelector('.text-success').textContent = `há ${randomMinutes} minutos - ${randomCity}`;
+                locationEl.textContent = `há ${randomMinutes} minutos - ${randomCity}`;
                 
                 popup.style.display = 'block';
                 
@@ -983,9 +620,31 @@
 
         function hideSocialProof() {
             const popup = document.getElementById('socialProof');
-            if (popup) popup.style.display = 'none';
+            if (popup) {
+                popup.style.display = 'none';
+            }
         }
 
+        // CTA Button interactions
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('cta-button')) {
+                const button = e.target;
+                const originalContent = button.innerHTML;
+                
+                button.innerHTML = '<i class="material-icons left">hourglass_empty</i>PROCESSANDO...';
+                button.disabled = true;
+                button.style.opacity = '0.8';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    // Here you would redirect to payment page
+                }, 2000);
+            }
+        });
+
+        // Smooth scroll to pricing
         function scrollToPricing() {
             const pricingSection = document.getElementById('pricing-section');
             if (pricingSection) {
@@ -993,56 +652,371 @@
                     behavior: 'smooth',
                     block: 'center'
                 });
+                
+                // Add pulse effect
+                pricingSection.style.animation = 'pulse 1s ease-in-out 3';
             }
         }
 
-        // Initialize critical features
-        updateCountdown();
-        setInterval(updateCountdown, 5000);
-
-        // Delayed initialization for non-critical features
-        setTimeout(() => {
-            showSocialProof();
-            setInterval(showSocialProof, 15000);
-        }, 3000);
-
-        // Enhanced CTA interactions
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.one-click-buy').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const originalContent = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>PROCESSANDO...';
-                    this.disabled = true;
-                    this.style.opacity = '0.8';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = originalContent;
-                        this.disabled = false;
-                        this.style.opacity = '1';
-                    }, 2000);
-                });
-            });
+            updateCountdown();
+            setInterval(updateCountdown, 5000);
+            
+            // Show social proof after 3 seconds, then every 15 seconds
+            setTimeout(() => {
+                showSocialProof();
+                setInterval(showSocialProof, 15000);
+            }, 3000);
         });
 
-        // Bounce animation for chevron
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes bounce {
-                0%, 20%, 53%, 80%, 100% {
-                    transform: translate3d(0,0,0);
-                }
-                40%, 43% {
-                    transform: translate3d(0, -30px, 0);
-                }
-                70% {
-                    transform: translate3d(0, -15px, 0);
-                }
-                90% {
-                    transform: translate3d(0, -4px, 0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        // Performance optimizations
+        // Preload critical images
+        const preloadImages = [
+            'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f0f0f0"/><text x="50%" y="50%" font-size="16" text-anchor="middle" dy=".3em" fill="%23666">Imagem do Produto</text></svg>'
+        ];
+
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Service Worker registration for caching (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(registrationError => console.log('SW registration failed'));
+            });
+        }
     </script>
 </body>
 </html>
+                            <div class="yellow-text text-accent-2">
+                                <i class="material-icons left">star</i>
+                                <span>4.9/5 (2.847 avaliações)</span>
+                            </div>
+                        </div>
+                        <div class="col s12 m4">
+                            <div class="yellow-text text-accent-2">
+                                <i class="material-icons left">group</i>
+                                <span>+10.000 alunos</span>
+                            </div>
+                        </div>
+                        <div class="col s12 m4">
+                            <div class="yellow-text text-accent-2">
+                                <i class="material-icons left">verified</i>
+                                <span>Método científico</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">
+                            <button class="btn-large waves-effect waves-light cta-button pulse-btn" onclick="scrollToPricing()" style="width: 100%; margin-bottom: 1rem;">
+                                <i class="material-icons left">rocket_launch</i>
+                                TRANSFORMAR MINHA VIDA AGORA
+                            </button>
+                            <div class="white-text" style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 25px; display: inline-block;">
+                                <i class="material-icons left">shield</i>
+                                Garantia de 7 dias
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section grey lighten-4 lazy-load">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h2 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem;">
+                        Você Reconhece Estes Sinais?
+                    </h2>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+                        A ansiedade pode estar roubando os melhores momentos da sua vida...
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="card hoverable">
+                        <div class="card-content center-align">
+                            <i class="material-icons red-text" style="font-size: 3rem; margin-bottom: 1rem;">favorite_border</i>
+                            <h5>Coração Acelerado</h5>
+                            <p>Palpitações constantes que parecem não ter fim</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col s12 m4">
+                    <div class="card hoverable">
+                        <div class="card-content center-align">
+                            <i class="material-icons blue-text" style="font-size: 3rem; margin-bottom: 1rem;">bedtime</i>
+                            <h5>Noites em Claro</h5>
+                            <p>Insônia e pensamentos que não param de girar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col s12 m4">
+                    <div class="card hoverable">
+                        <div class="card-content center-align">
+                            <i class="material-icons purple-text" style="font-size: 3rem; margin-bottom: 1rem;">person_off</i>
+                            <h5>Isolamento Social</h5>
+                            <p>Evitar situações sociais por medo e insegurança</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section white lazy-load">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h2 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem;">
+                        A Solução Que Você Estava Procurando
+                    </h2>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+                        Nosso método revolucionário combina técnicas comprovadas pela ciência
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="animated-bullet" style="animation-delay: 0.1s; margin-bottom: 2rem;">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="material-icons green-text large">check_circle</i>
+                            </div>
+                            <div class="col s10">
+                                <h5 style="margin: 0 0 0.5rem 0;">Técnicas de Respiração Avançadas</h5>
+                                <p style="margin: 0; color: #666;">Aprenda a controlar sua ansiedade em segundos</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="animated-bullet" style="animation-delay: 0.3s; margin-bottom: 2rem;">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="material-icons green-text large">check_circle</i>
+                            </div>
+                            <div class="col s10">
+                                <h5 style="margin: 0 0 0.5rem 0;">Reestruturação Cognitiva</h5>
+                                <p style="margin: 0; color: #666;">Mude os padrões de pensamento que geram ansiedade</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="animated-bullet" style="animation-delay: 0.5s; margin-bottom: 2rem;">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="material-icons green-text large">check_circle</i>
+                            </div>
+                            <div class="col s10">
+                                <h5 style="margin: 0 0 0.5rem 0;">Mindfulness Prático</h5>
+                                <p style="margin: 0; color: #666;">Viva o presente sem se preocupar com o futuro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col s12 m6 center-align">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0f0f0'/><text x='50%' y='50%' font-size='16' text-anchor='middle' dy='.3em' fill='%23666'>Imagem do Produto</text></svg>" alt="Produto" class="responsive-img" style="border-radius: 10px;">
+                        <div class="chip red white-text" style="position: absolute; top: -10px; right: -10px; font-weight: bold;">
+                            50% OFF
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-animated white-text lazy-load">
+        <div class="container">
+            <div class="row">
+                <div class="col s6 m3 center-align">
+                    <div class="stat-card">
+                        <h3 style="font-size: 3rem; font-weight: bold; margin: 0;">10,000+</h3>
+                        <p style="font-size: 1.1rem; margin: 0;">Vidas Transformadas</p>
+                    </div>
+                </div>
+                <div class="col s6 m3 center-align">
+                    <div class="stat-card">
+                        <h3 style="font-size: 3rem; font-weight: bold; margin: 0;">95%</h3>
+                        <p style="font-size: 1.1rem; margin: 0;">Taxa de Sucesso</p>
+                    </div>
+                </div>
+                <div class="col s6 m3 center-align">
+                    <div class="stat-card">
+                        <h3 style="font-size: 3rem; font-weight: bold; margin: 0;">30</h3>
+                        <p style="font-size: 1.1rem; margin: 0;">Dias para Resultados</p>
+                    </div>
+                </div>
+                <div class="col s6 m3 center-align">
+                    <div class="stat-card">
+                        <h3 style="font-size: 3rem; font-weight: bold; margin: 0;">24/7</h3>
+                        <p style="font-size: 1.1rem; margin: 0;">Suporte Disponível</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section grey lighten-4 lazy-load">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h2 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem;">
+                        O Que Nossos Clientes Dizem
+                    </h2>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+                        Resultados reais de pessoas reais
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="testimonial-carousel">
+                        <div class="carousel-track" id="testimonialCarousel">
+                            <!-- Testimonial 1 -->
+                            <div class="carousel-slide">
+                                <div class="whatsapp-container">
+                                    <div class="row valign-wrapper" style="margin-bottom: 20px;">
+                                        <div class="col s3 m2">
+                                            <div class="circle pink center-align white-text" style="width: 50px; height: 50px; line-height: 50px; font-weight: bold;">M</div>
+                                        </div>
+                                        <div class="col s9 m10">
+                                            <h6 style="margin: 0; font-weight: 600;">Maria Silva</h6>
+                                            <small style="color: #666;">Online agora</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="clear: both;">
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">Gente, não acredito!</p>
+                                            <div class="message-time">14:32</div>
+                                        </div>
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
+                                            <div class="message-time">14:32</div>
+                                        </div>
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava!</p>
+                                            <div class="message-time">14:33</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 2 -->
+                            <div class="carousel-slide">
+                                <div class="whatsapp-container">
+                                    <div class="row valign-wrapper" style="margin-bottom: 20px;">
+                                        <div class="col s3 m2">
+                                            <div class="circle blue center-align white-text" style="width: 50px; height: 50px; line-height: 50px; font-weight: bold;">J</div>
+                                        </div>
+                                        <div class="col s9 m10">
+                                            <h6 style="margin: 0; font-weight: 600;">João Santos</h6>
+                                            <small style="color: #666;">Online agora</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="clear: both;">
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">Cara, esse método é INCRÍVEL!</p>
+                                            <div class="message-time">15:45</div>
+                                        </div>
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">2 meses sem crise de ansiedade! Pela primeira vez em anos durmo a noite toda</p>
+                                            <div class="message-time">15:46</div>
+                                        </div>
+                                        <div class="whatsapp-message message-received">
+                                            <p style="margin: 0; font-size: 0.9rem;">Obrigado por devolver minha vida!</p>
+                                            <div class="message-time">15:46</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="center-align" style="margin-top: 20px;">
+                        <span class="carousel-dot btn-floating btn-small grey" onclick="goToSlide(0)"></span>
+                        <span class="carousel-dot btn-floating btn-small grey" onclick="goToSlide(1)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: linear-gradient(135deg, #ff5722, #f44336);">
+        <!-- Urgency Timer -->
+        <div class="urgency-timer center-align white-text" style="padding: 15px 0; margin-bottom: 2rem;">
+            <div class="container">
+                <p style="margin: 0; font-weight: 600;">
+                    <i class="material-icons tiny">whatshot</i>
+                    OFERTA ESPECIAL TERMINA EM: <span id="countdown" style="font-weight: bold;">23:45:12</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h2 class="white-text" style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem;">
+                        Não Deixe a Ansiedade Controlar Sua Vida
+                    </h2>
+                    <p class="white-text" style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Junte-se a milhares de pessoas que já transformaram suas vidas
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="card" id="pricing-section" style="padding: 2rem; border-radius: 15px;">
+                        <div class="center-align">
+                            <div style="text-decoration: line-through; color: #f44336; font-size: 2rem; font-weight: bold;">R$ 347</div>
+                            <div style="color: #4caf50; font-size: 3rem; font-weight: bold; margin: 0.5rem 0;">R$ 47</div>
+                            <p style="color: #666; margin-bottom: 1rem;">Oferta por tempo limitado</p>
+                            
+                            <!-- Value Stack -->
+                            <div style="text-align: left; margin-bottom: 2rem;">
+                                <p><i class="material-icons tiny green-text">check</i> Acesso vitalício</p>
+                                <p><i class="material-icons tiny green-text">check</i> Suporte 24/7</p>
+                                <p><i class="material-icons tiny green-text">check</i> Certificado incluso</p>
+                                <p><i class="material-icons tiny green-text">check</i> Garantia 7 dias</p>
+                            </div>
+                            
+                            <button class="btn-large waves-effect waves-light cta-button pulse-btn" style="width: 100%; margin-bottom: 1rem;">
+                                <i class="material-icons left">credit_card</i>
+                                COMPRAR AGORA - 86% OFF
+                            </button>
+                            
+                            <div style="margin-top: 1rem;">
+                                <span style="margin: 0 1rem;"><i class="material-icons tiny">credit_card</i> Cartão</span>
+                                <span style="margin: 0 1rem;"><i class="material-icons tiny">payment</i> PIX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 center-align">
+                    <div class="row">
+                        <div class="col s12 m4">
