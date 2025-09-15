@@ -31,6 +31,35 @@
             animation: float 20s ease-in-out infinite;
         }
         
+        .stats-animated {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .stat-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeInScale 1s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
@@ -283,24 +312,24 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
-        <div class="container mx-auto px-4">
+    <section class="py-20 stats-animated text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2">10,000+</div>
-                    <p class="text-lg opacity-90">Vidas Transformadas</p>
+                <div class="stat-card rounded-2xl p-6" style="animation-delay: 0.1s;">
+                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">10,000+</div>
+                    <p class="text-lg font-semibold text-white drop-shadow">Vidas Transformadas</p>
                 </div>
-                <div>
-                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2">95%</div>
-                    <p class="text-lg opacity-90">Taxa de Sucesso</p>
+                <div class="stat-card rounded-2xl p-6" style="animation-delay: 0.2s;">
+                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">95%</div>
+                    <p class="text-lg font-semibold text-white drop-shadow">Taxa de Sucesso</p>
                 </div>
-                <div>
-                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2">30</div>
-                    <p class="text-lg opacity-90">Dias para Ver Resultados</p>
+                <div class="stat-card rounded-2xl p-6" style="animation-delay: 0.3s;">
+                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">30</div>
+                    <p class="text-lg font-semibold text-white drop-shadow">Dias para Ver Resultados</p>
                 </div>
-                <div>
-                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2">24/7</div>
-                    <p class="text-lg opacity-90">Suporte Disponível</p>
+                <div class="stat-card rounded-2xl p-6" style="animation-delay: 0.4s;">
+                    <div class="stat-counter text-4xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">24/7</div>
+                    <p class="text-lg font-semibold text-white drop-shadow">Suporte Disponível</p>
                 </div>
             </div>
         </div>
@@ -432,14 +461,14 @@
             </p>
             
             <div class="bg-white text-gray-800 p-8 rounded-2xl max-w-md mx-auto mb-8">
-                <div class="text-3xl font-bold text-red-500 line-through mb-2">R$ 497</div>
-                <div class="text-5xl font-bold text-green-600 mb-4">R$ 197</div>
+                <div class="text-3xl font-bold text-red-500 line-through mb-2">R$ 197</div>
+                <div class="text-5xl font-bold text-green-600 mb-4">R$ 47</div>
                 <p class="text-sm opacity-70">Oferta por tempo limitado</p>
             </div>
             
             <button class="btn btn-warning btn-lg pulse-btn text-xl font-bold px-8 py-4 shadow-2xl">
                 <i class="fas fa-shopping-cart mr-2"></i>
-                COMPRAR AGORA - 50% OFF
+                COMPRAR AGORA - 76% OFF
             </button>
             
             <div class="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
@@ -454,6 +483,88 @@
                 <div class="flex items-center">
                     <i class="fas fa-mobile-alt text-2xl text-yellow-300 mr-2"></i>
                     <span class="font-semibold">Acesso vitalício</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Perguntas Frequentes
+                </h2>
+                <p class="text-xl text-gray-600">Tire todas as suas dúvidas</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" checked="checked" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-clock text-blue-500 mr-2"></i>
+                            Em quanto tempo vejo resultados?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">A maioria dos nossos alunos relatam melhorias significativas já nas primeiras semanas. O método é projetado para oferecer técnicas de alívio imediato, enquanto trabalha mudanças profundas e duradouras. Você terá acesso a exercícios práticos que podem ser aplicados imediatamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-mobile-alt text-green-500 mr-2"></i>
+                            Como funciona o acesso ao curso?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">Após a compra, você recebe acesso imediato à plataforma online. O curso pode ser acessado 24/7 de qualquer dispositivo - computador, tablet ou celular. Todo o conteúdo fica disponível para você para sempre, permitindo revisar sempre que precisar.</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-shield-alt text-purple-500 mr-2"></i>
+                            Como funciona a garantia de 7 dias?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">Nossa garantia é simples e sem complicações. Se em 7 dias você não sentir que o curso está te ajudando, basta enviar um e-mail e devolvemos 100% do valor investido. Não fazemos perguntas e o reembolso é processado em até 48 horas.</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-user-md text-red-500 mr-2"></i>
+                            Preciso parar meu tratamento médico?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">De forma alguma! Nosso curso é complementar ao acompanhamento médico e psicológico. Sempre incentivamos que você mantenha seu tratamento profissional. As técnicas ensinadas são baseadas em evidências científicas e servem como ferramentas adicionais para seu bem-estar.</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-graduation-cap text-orange-500 mr-2"></i>
+                            Preciso de conhecimento prévio?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">Não é necessário nenhum conhecimento prévio! O curso foi desenvolvido para pessoas comuns, com linguagem clara e exercícios práticos. Começamos do básico e evoluímos gradualmente, sempre com exemplos reais e aplicações do dia a dia.</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-plus bg-white shadow-lg rounded-xl">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title text-xl font-semibold text-gray-800">
+                            <i class="fas fa-headset text-blue-600 mr-2"></i>
+                            Terei suporte durante o curso?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-gray-600 leading-relaxed">Sim! Oferecemos suporte completo via WhatsApp e e-mail. Nossa equipe está preparada para tirar dúvidas sobre o conteúdo e te apoiar durante toda sua jornada. Também temos uma comunidade exclusiva onde você pode compartilhar experiências com outros alunos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -587,14 +698,34 @@
             });
         });
 
-        // Add floating animation to hero elements on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroElements = document.querySelector('.hero-parallax');
-            if (heroElements) {
-                heroElements.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
+        // Remove parallax effect but keep hero animations
+        // window.addEventListener('scroll', () => {
+        //     const scrolled = window.pageYOffset;
+        //     const heroElements = document.querySelector('.hero-parallax');
+        //     if (heroElements) {
+        //         heroElements.style.transform = `translateY(${scrolled * 0.5}px)`;
+        //     }
+        // });
+
+        // Animate stats when they come into view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statCards = entry.target.querySelectorAll('.stat-card');
+                    statCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.animationDelay = `${index * 0.1}s`;
+                            card.classList.add('animate');
+                        }, index * 100);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.stats-animated');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 </body>
 </html>
