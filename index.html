@@ -1,229 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing Page Completa</title>
-
-<!-- Tailwind + DaisyUI -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.2.1/dist/full.css" rel="stylesheet">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-<!-- Animate.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-<style>
-body { font-family: 'Roboto', sans-serif; background:#f5f5f5; position:relative; }
-.sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
-.card { transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s; opacity:0; transform: translateY(20px); border-radius:12px; }
-.card.show { opacity:1; transform: translateY(0); }
-.card:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
-.dashboard { position: fixed; top: 100px; right: 20px; background:white; padding:10px 15px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.25); font-size:0.9rem; z-index:1000; }
-.lottie-bonus { position:absolute; width:80px; height:80px; pointer-events:none; }
-.progress-bar { position: fixed; top:0; left:0; height:5px; background:#f59e0b; width:0%; z-index:10000; transition: width 0.2s ease; border-radius:0 0 5px 5px; }
-.toast { position: fixed; bottom: 100px; right: 20px; background:#22c55e; color:white; padding:12px 18px; border-radius:8px; box-shadow:0 5px 20px rgba(0,0,0,0.3); opacity:0; transform: translateY(20px); transition: all 0.5s; z-index:10000; font-weight:500; }
-.toast.show { opacity:1; transform: translateY(0); }
-.btn-primary { background: linear-gradient(90deg, #f59e0b, #f97316); border:none; color:white; font-weight:600; transition: all 0.3s; }
-.btn-primary:hover { background: linear-gradient(90deg, #f97316, #f59e0b); transform: scale(1.05); }
-.accordion-content { max-height:0; overflow:hidden; transition: max-height 0.3s ease; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaisyUI Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.js"></script>
 </head>
-<body>
-
-<!-- Scroll Progress Bar -->
-<div class="progress-bar" id="scrollProgress"></div>
-
-<!-- Navbar -->
-<nav class="bg-white shadow-md fixed w-full z-50">
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <a href="#" class="font-bold text-xl text-gray-800">Minha Marca</a>
-    <div class="space-x-4 hidden md:flex">
-      <a href="#services" class="text-gray-600 hover:text-orange-500 font-medium">Serviços</a>
-      <a href="#how" class="text-gray-600 hover:text-orange-500 font-medium">Como Funciona</a>
-      <a href="#testimonials" class="text-gray-600 hover:text-orange-500 font-medium">Depoimentos</a>
-      <a href="#guarantee" class="text-gray-600 hover:text-orange-500 font-medium">Garantia</a>
-      <a href="#faq" class="text-gray-600 hover:text-orange-500 font-medium">FAQ</a>
-      <a href="#contact" class="text-gray-600 hover:text-orange-500 font-medium">Contato</a>
+<body data-theme="cupcake">
+  <!-- Navbar -->
+  <nav class="navbar bg-base-100 px-6 shadow-md">
+    <div class="flex-1 text-xl font-bold">Minha Marca</div>
+    <div class="flex-none">
+      <button class="btn btn-primary">Contato</button>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- Hero -->
-<section class="relative h-screen flex items-center justify-center text-center overflow-hidden pt-20 bg-gradient-to-b from-orange-50 to-white">
-  <div id="lottie-hero" class="absolute inset-0 w-full h-full opacity-30"></div>
-  <div class="relative z-10 max-w-xl animate_animated animate_fadeInUp">
-    <span class="badge badge-warning mb-4 text-lg font-semibold" id="last-spot">Últimas 10 vagas!</span>
-    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-800">Transforme Sua Vida Agora</h1>
-    <p class="mb-6 text-lg md:text-xl text-gray-700">Landing page moderna, interativa e otimizada para conversão.</p>
-    <button class="btn btn-primary btn-lg px-6 py-3 cta-primary">Quero Garantir Minha Vaga</button>
-    <div class="mt-4 badge badge-success">Garantia de satisfação 7 dias</div>
-    <div class="mt-4 text-red-500 font-bold text-lg">Oferta expira em: <span id="countdown">00:30:00</span></div>
-    <div class="mt-4 text-yellow-500 font-bold text-lg">Vagas vendidas hoje: <span id="sold-count">0</span></div>
-  </div>
-</section>
-
-<!-- WhatsApp flutuante -->
-<a href="https://wa.me/5511999999999" class="btn btn-circle btn-success sticky-cta" target="_blank">💬</a>
-
-<!-- Serviços -->
-<section id="services" class="py-20 container mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Nossos Serviços</h2>
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="card p-6 bg-white shadow-lg">Design Moderno</div>
-    <div class="card p-6 bg-white shadow-lg">Responsivo</div>
-    <div class="card p-6 bg-white shadow-lg">Interativo</div>
-  </div>
-</section>
-
-<!-- Como Funciona -->
-<section id="how" class="py-20 bg-gray-50">
-  <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Como Funciona</h2>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-    <div class="card p-6 bg-white shadow-lg rounded-lg">Escolha seu plano</div>
-    <div class="card p-6 bg-white shadow-lg rounded-lg">Receba acesso imediato</div>
-    <div class="card p-6 bg-white shadow-lg rounded-lg">Comece a transformação</div>
-  </div>
-</section>
-
-<!-- Depoimentos -->
-<section id="testimonials" class="py-20">
-  <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Depoimentos</h2>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div class="card p-6 bg-white text-gray-800 rounded shadow-lg">"Excelente design e responsividade!" - João</div>
-    <div class="card p-6 bg-white text-gray-800 rounded shadow-lg">"Landing page moderna e interativa!" - Maria</div>
-    <div class="card p-6 bg-white text-gray-800 rounded shadow-lg">"Facilidade de navegação e visual incrível!" - Carlos</div>
-  </div>
-</section>
-
-<!-- Garantia e Bônus -->
-<section id="guarantee" class="py-20 bg-gray-50 text-center">
-  <h2 class="text-3xl font-bold mb-6 text-gray-800">Garantia e Bônus</h2>
-  <p class="mb-4 text-gray-700">Garantia de 7 dias ou seu dinheiro de volta.</p>
-  <p class="text-gray-700">Bônus exclusivos para os primeiros inscritos!</p>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="py-20 container mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">FAQ</h2>
-  <div class="space-y-4 max-w-3xl mx-auto">
-    <div class="border rounded-lg p-4">
-      <button class="w-full text-left font-medium faq-toggle">Como posso me inscrever?</button>
-      <div class="accordion-content pl-2 pt-2 text-gray-700">Basta clicar no botão "Quero Garantir Minha Vaga" e seguir os passos.</div>
+  <!-- Hero -->
+  <section class="hero min-h-[80vh] bg-base-200">
+    <div class="hero-content text-center">
+      <div class="max-w-lg">
+        <h1 class="text-5xl font-bold">Landing moderna</h1>
+        <p class="py-6">Feita com <b>DaisyUI</b>. Colorida, responsiva e rápida de construir.</p>
+        <button class="btn btn-secondary">Começar agora</button>
+      </div>
     </div>
-    <div class="border rounded-lg p-4">
-      <button class="w-full text-left font-medium faq-toggle">Há garantia?</button>
-      <div class="accordion-content pl-2 pt-2 text-gray-700">Sim! 7 dias de garantia total.</div>
+  </section>
+
+  <!-- Cards -->
+  <section class="p-10 grid md:grid-cols-3 gap-6">
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Fácil</h2>
+        <p>Classes simples e temas prontos.</p>
+      </div>
     </div>
-    <div class="border rounded-lg p-4">
-      <button class="w-full text-left font-medium faq-toggle">Quando recebo o acesso?</button>
-      <div class="accordion-content pl-2 pt-2 text-gray-700">O acesso é imediato após a inscrição.</div>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Bonito</h2>
+        <p>Cores vibrantes e estilos modernos.</p>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer id="contact" class="py-12 bg-gray-800 text-white text-center">
-  <p>&copy; 2025 Minha Marca. Todos os direitos reservados.</p>
-  <p>Email: contato@minhamarca.com | Telefone: (00) 1234-5678</p>
-  <p class="text-sm text-gray-300 mt-2">Visitas nesta sessão: <span id="visit-count">0</span></p>
-</footer>
-
-<!-- Mini Dashboard -->
-<div class="dashboard" id="dashboard">
-  <strong>Métricas</strong>
-  <div>Visitas: <span id="dash-visits">0</span></div>
-  <div>Clicks CTA: <span id="dash-clicks">0</span></div>
-  <div>Vendas simuladas: <span id="dash-sold">0</span></div>
-</div>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.1/lottie.min.js"></script>
-
-<script>
-// Scroll Progress
-window.addEventListener('scroll',()=>{
-  const docHeight=document.body.scrollHeight-window.innerHeight;
-  const scrollPercent=(window.scrollY/docHeight)*100;
-  document.getElementById('scrollProgress').style.width=scrollPercent+'%';
-});
-
-// Toast
-function showToast(msg){
-  const toast=document.createElement('div'); toast.className='toast show'; toast.textContent=msg;
-  document.body.appendChild(toast);
-  setTimeout(()=>toast.classList.remove('show'),3000);
-  setTimeout(()=>toast.remove(),3500);
-}
-
-// Countdown
-let countdownTime=30*60;
-const countdownEl=document.getElementById('countdown');
-setInterval(()=>{
-  const minutes=Math.floor(countdownTime/60).toString().padStart(2,'0');
-  const seconds=(countdownTime%60).toString().padStart(2,'0');
-  countdownEl.textContent=00:${minutes}:${seconds};
-  countdownTime>0?countdownTime--:countdownEl.textContent="Oferta Expirada!";
-},1000);
-
-// Dashboard e contadores
-let visitCount=parseInt(sessionStorage.getItem('visitCount')||'0'); visitCount++;
-sessionStorage.setItem('visitCount',visitCount);
-document.getElementById('visit-count').textContent=visitCount;
-document.getElementById('dash-visits').textContent=visitCount;
-
-let clickCount=0, soldCount=0;
-
-// CTA click
-document.querySelectorAll('.cta-primary').forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    clickCount++; soldCount++;
-    document.getElementById('dash-clicks').textContent=clickCount;
-    document.getElementById('dash-sold').textContent=soldCount;
-    document.getElementById('sold-count').textContent=soldCount;
-    showToast(Parabéns! Mais uma vaga garantida!);
-
-    const bonus=document.createElement('div'); bonus.classList.add('lottie-bonus'); document.body.appendChild(bonus);
-    lottie.loadAnimation({container:bonus, renderer:'svg', loop:false, autoplay:true, path:'https://assets9.lottiefiles.com/packages/lf20_jcikwtux.json'});
-    bonus.style.left=(e.clientX-40)+'px'; bonus.style.top=(e.clientY-40)+'px';
-    setTimeout(()=>bonus.remove(),1500);
-  });
-});
-
-// GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-document.querySelectorAll('.card').forEach(card=>{
-  gsap.to(card,{opacity:1,y:0,duration:0.8,scrollTrigger:{trigger:card,start:"top 80%",toggleActions:"play none none none"}});
-});
-
-// Lottie hero
-lottie.loadAnimation({container:document.getElementById('lottie-hero'), renderer:'svg', loop:true, autoplay:true, path:'https://assets9.lottiefiles.com/packages/lf20_tfb3estd.json'});
-
-// Simulação vendas aleatórias
-setInterval(()=>{
-  soldCount++; document.getElementById('dash-sold').textContent=soldCount;
-  document.getElementById('sold-count').textContent=soldCount;
-  showToast(Outra vaga foi comprada!);
-  const bonus=document.createElement('div'); bonus.classList.add('lottie-bonus'); document.body.appendChild(bonus);
-  lottie.loadAnimation({container:bonus, renderer:'svg', loop:false, autoplay:true, path:'https://assets9.lottiefiles.com/packages/lf20_jcikwtux.json'});
-  bonus.style.left=(window.innerWidth-100)+'px'; bonus.style.top='20px';
-  setTimeout(()=>bonus.remove(),1500);
-},15000);
-
-// FAQ Accordion
-document.querySelectorAll('.faq-toggle').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const content=btn.nextElementSibling;
-    if(content.style.maxHeight) content.style.maxHeight=null;
-    else content.style.maxHeight=content.scrollHeight+'px';
-  });
-});
-</script>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Responsivo</h2>
+        <p>Funciona bem em mobile, tablet e desktop.</p>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
