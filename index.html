@@ -37,6 +37,10 @@
 
     /* Feedback visual nos botões */
     .btn:hover { transform: scale(1.05); transition: transform 0.2s; }
+
+    /* Badge e Selo */
+    .badge { padding:5px 15px; display:inline-block; border-radius:5px; font-weight:bold; margin-bottom:15px; }
+    .selo { padding:8px 15px; display:inline-block; border-radius:5px; font-weight:bold; margin-top:15px; }
   </style>
 </head>
 <body>
@@ -61,13 +65,27 @@
     <li><a class="modal-trigger" href="#contact-modal">Contato</a></li>
   </ul>
 
-  <!-- Hero com Parallax e CTA -->
+  <!-- Hero com Parallax, Badge e Selo -->
   <div class="parallax-container hero">
     <div class="parallax"><img src="https://images.unsplash.com/photo-1612831455540-9c1b6ef95b77?auto=format&fit=crop&w=1470&q=80" alt="Hero"></div>
     <div class="container center-align white-text" style="position: relative; top: 50%;">
+      
+      <!-- Badge de Urgência -->
+      <div class="highlight-yellow badge white-text">
+        Últimas 10 vagas disponíveis!
+      </div>
+
       <h1 class="header">Transforme Sua Vida Agora</h1>
       <p class="flow-text">Visual moderno, interativo e otimizado para conversão.</p>
+
+      <!-- CTA Principal -->
       <a class="btn-large waves-effect waves-light cta-primary modal-trigger" href="#contact-modal">Quero Garantir Minha Vaga</a>
+
+      <!-- Selo de Garantia -->
+      <div class="trust-green selo white-text">
+        Garantia de satisfação de 7 dias
+      </div>
+
     </div>
   </div>
 
@@ -178,17 +196,16 @@
       // Inicializa Sidenav
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
-      // Animações
       // Animações Fade-in
       setTimeout(() => document.querySelector('.hero').classList.add('show'), 100);
       const cards = document.querySelectorAll('.card.hoverable');
       cards.forEach((card, i) => setTimeout(() => card.classList.add('show'), 300 + i*200));
 
-      // Carousel autoplay (opcional para engajamento)
+      // Carousel autoplay
       const carouselElems = document.querySelectorAll('.carousel');
       carouselElems.forEach(carousel => {
         const instance = M.Carousel.getInstance(carousel);
-        setInterval(() => { instance.next(); }, 5000); // muda a cada 5 segundos
+        setInterval(() => { instance.next(); }, 5000);
       });
     });
   </script>
