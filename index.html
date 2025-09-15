@@ -190,7 +190,7 @@
                     Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade e recuperarem o controle total de suas vidas
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <button class="btn btn-warning btn-lg pulse-btn text-lg font-semibold shadow-2xl">
+                    <button class="btn btn-warning btn-lg pulse-btn text-lg font-semibold shadow-2xl" onclick="scrollToPricing()">
                         <i class="fas fa-rocket mr-2"></i>
                         QUERO TRANSFORMAR MINHA VIDA AGORA
                     </button>
@@ -460,15 +460,15 @@
                 Junte-se a milhares de pessoas que já transformaram suas vidas. Sua nova realidade está a um clique de distância.
             </p>
             
-            <div class="bg-white text-gray-800 p-8 rounded-2xl max-w-md mx-auto mb-8">
-                <div class="text-3xl font-bold text-red-500 line-through mb-2">R$ 197</div>
+            <div class="bg-white text-gray-800 p-8 rounded-2xl max-w-md mx-auto mb-8" id="pricing-section">
+                <div class="text-3xl font-bold text-red-500 line-through mb-2">R$ 347</div>
                 <div class="text-5xl font-bold text-green-600 mb-4">R$ 47</div>
                 <p class="text-sm opacity-70">Oferta por tempo limitado</p>
             </div>
             
             <button class="btn btn-warning btn-lg pulse-btn text-xl font-bold px-8 py-4 shadow-2xl">
                 <i class="fas fa-shopping-cart mr-2"></i>
-                COMPRAR AGORA - 76% OFF
+                COMPRAR AGORA - 86% OFF
             </button>
             
             <div class="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
@@ -683,6 +683,23 @@
                 observer.observe(section);
             }
         });
+
+        // Smooth scroll to pricing section
+        function scrollToPricing() {
+            const pricingSection = document.getElementById('pricing-section');
+            if (pricingSection) {
+                pricingSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Add highlight effect
+                pricingSection.classList.add('animate-pulse');
+                setTimeout(() => {
+                    pricingSection.classList.remove('animate-pulse');
+                }, 2000);
+            }
+        }
 
         // Smooth scrolling for CTA buttons
         document.querySelectorAll('.btn').forEach(button => {
