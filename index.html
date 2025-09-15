@@ -218,8 +218,27 @@
                 bottom: 10px;
                 left: 10px;
                 right: 10px;
-                max-width: none;
+                max-width: 280px;
                 margin: 0 auto;
+            }
+            
+            .social-proof-popup .flex {
+                align-items: flex-start;
+            }
+            
+            .social-proof-popup .w-10 {
+                width: 2rem;
+                height: 2rem;
+                flex-shrink: 0;
+            }
+            
+            .social-proof-popup p {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+            
+            .social-proof-popup .text-xs {
+                font-size: 0.65rem;
             }
             
             .hero-parallax h1 {
@@ -261,8 +280,17 @@
             }
             
             .one-click-buy {
-                font-size: 1rem;
-                padding: 1rem 2rem;
+                font-size: 0.9rem;
+                padding: 0.875rem 1.5rem;
+                letter-spacing: 0.25px;
+            }
+            
+            .hero-cta-mobile {
+                font-size: 0.875rem;
+                padding: 0.75rem 1rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
         
@@ -338,12 +366,13 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <button class="btn btn-warning btn-lg pulse-btn text-lg font-semibold shadow-2xl" onclick="scrollToPricing()">
-                        <i class="fas fa-rocket mr-2"></i>
-                        QUERO TRANSFORMAR MINHA VIDA AGORA
+                    <button class="btn btn-warning btn-lg pulse-btn text-sm md:text-lg font-semibold shadow-2xl hero-cta-mobile px-4 md:px-6" onclick="scrollToPricing()">
+                        <i class="fas fa-rocket mr-1 md:mr-2"></i>
+                        <span class="hidden sm:inline">QUERO TRANSFORMAR MINHA VIDA AGORA</span>
+                        <span class="sm:hidden">TRANSFORMAR MINHA VIDA</span>
                     </button>
-                    <div class="guarantee-badge bg-white text-black px-6 py-3 rounded-full font-semibold">
-                        <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                    <div class="guarantee-badge bg-white text-black px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm">
+                        <i class="fas fa-shield-alt text-green-500 mr-1 md:mr-2"></i>
                         Garantia de 7 dias
                     </div>
                 </div>
