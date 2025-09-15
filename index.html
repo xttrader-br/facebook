@@ -3,50 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DaisyUI Landing Page</title>
+  <title>Flowbite Landing Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.css" rel="stylesheet" />
 </head>
-<body data-theme="cupcake">
+<body class="bg-gray-50">
   <!-- Navbar -->
-  <nav class="navbar bg-base-100 px-6 shadow-md">
-    <div class="flex-1 text-xl font-bold">Minha Marca</div>
-    <div class="flex-none">
-      <button class="btn btn-primary">Contato</button>
-    </div>
+  <nav class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+    <span class="text-2xl font-bold">Minha Marca</span>
+    <button class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">Contato</button>
   </nav>
 
   <!-- Hero -->
-  <section class="hero min-h-[80vh] bg-base-200">
-    <div class="hero-content text-center">
-      <div class="max-w-lg">
-        <h1 class="text-5xl font-bold">Landing moderna</h1>
-        <p class="py-6">Feita com <b>DaisyUI</b>. Colorida, responsiva e rápida de construir.</p>
-        <button class="btn btn-secondary">Começar agora</button>
-      </div>
-    </div>
+  <section class="bg-gray-100 py-20 text-center">
+    <h1 class="mb-4 text-5xl font-extrabold text-gray-900">Landing moderna</h1>
+    <p class="mb-6 text-lg text-gray-600">Feita com <b>Flowbite</b>. Mais robusta e profissional.</p>
+    <button data-modal-target="demo-modal" data-modal-toggle="demo-modal"
+      class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg">
+      Abrir Modal
+    </button>
   </section>
 
   <!-- Cards -->
-  <section class="p-10 grid md:grid-cols-3 gap-6">
-    <div class="card bg-base-100 shadow-xl">
-      <div class="card-body">
-        <h2 class="card-title">Fácil</h2>
-        <p>Classes simples e temas prontos.</p>
-      </div>
+  <section class="grid md:grid-cols-3 gap-6 px-10 py-10">
+    <div class="p-6 bg-white rounded shadow">
+      <h2 class="text-xl font-bold mb-2">Componentes</h2>
+      <p>Botões, modais, navbars e muito mais.</p>
     </div>
-    <div class="card bg-base-100 shadow-xl">
-      <div class="card-body">
-        <h2 class="card-title">Bonito</h2>
-        <p>Cores vibrantes e estilos modernos.</p>
-      </div>
+    <div class="p-6 bg-white rounded shadow">
+      <h2 class="text-xl font-bold mb-2">Interativo</h2>
+      <p>Inclui JS para animações e eventos.</p>
     </div>
-    <div class="card bg-base-100 shadow-xl">
-      <div class="card-body">
-        <h2 class="card-title">Responsivo</h2>
-        <p>Funciona bem em mobile, tablet e desktop.</p>
-      </div>
+    <div class="p-6 bg-white rounded shadow">
+      <h2 class="text-xl font-bold mb-2">Escalável</h2>
+      <p>Ideal para SaaS e apps complexos.</p>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div id="demo-modal" tabindex="-1" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+      <h3 class="text-lg font-semibold mb-4">Sou um modal Flowbite!</h3>
+      <button data-modal-hide="demo-modal" class="px-4 py-2 bg-red-600 text-white rounded">Fechar</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.js"></script>
 </body>
 </html>
