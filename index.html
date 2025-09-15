@@ -209,8 +209,61 @@
             bottom: 20px;
             left: 20px;
             z-index: 1000;
-            max-width: 300px;
+            max-width: 280px;
             animation: slideInLeft 0.5s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .social-proof-popup {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
+                margin: 0 auto;
+            }
+            
+            .hero-parallax h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-parallax p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .trust-badge {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .urgency-timer p {
+                font-size: 0.75rem;
+                padding: 0 0.5rem;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+            }
+            
+            .stat-counter {
+                font-size: 2rem;
+            }
+            
+            .carousel-container {
+                margin: 0 1rem;
+            }
+            
+            .whatsapp-message {
+                max-width: 240px;
+                font-size: 0.875rem;
+            }
+            
+            .one-click-buy {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
         }
         
         @keyframes slideInLeft {
@@ -219,14 +272,25 @@
         }
         
         .one-click-buy {
-            background: linear-gradient(135deg, #2ed573, #1e90ff);
-            box-shadow: 0 10px 25px rgba(46, 213, 115, 0.3);
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: 3px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
+            font-weight: 800;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
         }
         
         .one-click-buy:hover {
-            box-shadow: 0 15px 35px rgba(46, 213, 115, 0.4);
-            transform: translateY(-3px);
+            background: linear-gradient(135deg, #e55a2b, #e8851a);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            border-color: #fff;
+        }
+        
+        .one-click-buy:active {
+            transform: translateY(-1px) scale(0.98);
         }
         
         .benefit-stack {
@@ -259,7 +323,7 @@
                 </p>
                 
                 <!-- Trust indicators -->
-                <div class="flex justify-center items-center space-x-6 mb-8 text-yellow-300">
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-8 text-yellow-300">
                     <div class="flex items-center trust-badge">
                         <i class="fas fa-star mr-1"></i>
                         <span class="text-sm font-semibold">4.9/5 (2.847 avaliações)</span>
@@ -566,21 +630,17 @@
             </div>
             
             <!-- One-Click Purchase -->
-            <div class="space-y-4">
-                <button class="one-click-buy text-white btn-lg pulse-btn text-xl font-bold px-12 py-6 rounded-full border-none">
+            <div class="space-y-6">
+                <button class="one-click-buy btn-lg pulse-btn text-lg md:text-xl font-black px-8 md:px-12 py-4 md:py-6 rounded-full border-none w-full md:w-auto">
                     <i class="fas fa-credit-card mr-2"></i>
                     COMPRAR AGORA - 86% OFF
                 </button>
                 
                 <!-- Multiple Payment Options -->
-                <div class="flex justify-center items-center space-x-4 text-sm opacity-80">
-                    <span>💳 Cartão</span>
-                    <span>|</span>
-                    <span>📱 PIX</span>
-                    <span>|</span>
-                    <span>🏦 Boleto</span>
-                    <span>|</span>
-                    <span>💰 PayPal</span>
+                <div class="flex justify-center items-center space-x-6 text-sm opacity-90">
+                    <span class="flex items-center">💳 <span class="ml-1">Cartão</span></span>
+                    <span class="text-white opacity-50">|</span>
+                    <span class="flex items-center">📱 <span class="ml-1">PIX</span></span>
                 </div>
             </div>
             
@@ -600,9 +660,9 @@
             </div>
             
             <!-- Social Proof -->
-            <div class="mt-8 bg-white bg-opacity-20 backdrop-blur rounded-xl p-4 max-w-2xl mx-auto">
-                <p class="text-sm mb-2">⭐⭐⭐⭐⭐ "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva</p>
-                <p class="text-xs opacity-75">Mais de 847 pessoas compraram nas últimas 24 horas</p>
+            <div class="mt-8 bg-white bg-opacity-20 backdrop-blur rounded-xl p-4 md:p-6 max-w-2xl mx-auto">
+                <p class="text-sm md:text-base mb-2">⭐⭐⭐⭐⭐ "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva</p>
+                <p class="text-xs md:text-sm opacity-75">Mais de 847 pessoas compraram nas últimas 24 horas</p>
             </div>
         </div>
     </section>
@@ -882,11 +942,16 @@
         document.querySelectorAll('.one-click-buy').forEach(button => {
             button.addEventListener('click', function(e) {
                 // Visual feedback
+                const originalContent = this.innerHTML;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>PROCESSANDO...';
+                this.disabled = true;
+                this.style.opacity = '0.8';
                 
                 setTimeout(() => {
-                    this.innerHTML = '<i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA - 86% OFF';
-                }, 1500);
+                    this.innerHTML = originalContent;
+                    this.disabled = false;
+                    this.style.opacity = '1';
+                }, 2000);
             });
         });
 
