@@ -3,147 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing Page Ultra Rápida</title>
+<title>Landing Page Premium</title>
 
-<!-- Materialize CSS via CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Tailwind + DaisyUI via CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.2.1/dist/full.css" rel="stylesheet">
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 <style>
-body { font-family: 'Roboto', sans-serif; background-color: #F5F5F5; margin:0; padding:0; }
-
-/* Hero */
-.hero { height:80vh; opacity:0; transform: translateY(30px); transition: opacity 1s, transform 1s; }
-.hero.show { opacity:1; transform: translateY(0); }
-
-/* Cards e bônus */
-.card.hoverable, .bonus-card { transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s; opacity:0; transform: translateY(20px); }
-.card.hoverable.show, .bonus-card.show { opacity:1; transform: translateY(0); }
-.bonus-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.3); cursor:pointer; }
-
-/* Sticky WhatsApp */
-.sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index:1000; }
-
-/* Footer */
-.footer { padding: 40px 20px; background-color:#1565C0; color:white; }
-
-/* Cores de conversão */
-.brand-primary { background-color:#123456 !important; }
-.cta-primary { background-color:#FF6A00 !important; }
-.cta-secondary { background-color:#E53935 !important; }
-.trust-green { background-color:#43A047 !important; }
-.highlight-purple { background-color:#8E24AA !important; }
-.highlight-yellow { background-color:#FBC02D !important; }
-
-/* Botões microinteração */
-.btn:hover { transform:scale(1.05); transition:transform 0.2s; }
-.btn:active { transform:scale(0.95); transition:transform 0.1s; }
-
-/* Badge e selo */
-.badge { padding:5px 15px; display:inline-block; border-radius:5px; font-weight:bold; margin-bottom:15px; }
-.selo { padding:8px 15px; display:inline-block; border-radius:5px; font-weight:bold; margin-top:15px; }
-
-/* Contador regressivo */
-.countdown { font-size:1.2rem; font-weight:bold; color:#E53935; margin:15px 0; }
+body { font-family: 'Roboto', sans-serif; }
+.sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+.card { transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s; opacity:0; transform: translateY(20px); }
+.card.show { opacity:1; transform: translateY(0); }
+.card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
 <!-- Navbar -->
-<nav class="brand-primary">
-  <div class="nav-wrapper container">
-    <a href="#!" class="brand-logo">Minha Marca</a>
-    <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#services">Serviços</a></li>
-      <li><a href="#testimonials">Depoimentos</a></li>
-      <li><a class="modal-trigger" href="#contact-modal">Contato</a></li>
-    </ul>
+<nav class="bg-blue-800 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="font-bold text-xl">Minha Marca</a>
+    <div class="space-x-4 hidden md:flex">
+      <a href="#services" class="hover:underline">Serviços</a>
+      <a href="#testimonials" class="hover:underline">Depoimentos</a>
+      <a href="#contact" class="hover:underline">Contato</a>
+    </div>
   </div>
 </nav>
-<ul class="sidenav" id="mobile-menu">
-  <li><a href="#services">Serviços</a></li>
-  <li><a href="#testimonials">Depoimentos</a></li>
-  <li><a class="modal-trigger" href="#contact-modal">Contato</a></li>
-</ul>
 
-<!-- Hero com lazy load -->
-<div class="parallax-container hero">
-  <div class="parallax">
-    <img data-src="https://images.unsplash.com/photo-1612831455540-9c1b6ef95b77?auto=format&fit=crop&w=1470&q=80" class="lazy" alt="Hero">
+<!-- Hero com parallax leve -->
+<section class="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
+  <div id="lottie-hero" class="absolute inset-0 w-full h-full"></div>
+  <div class="relative z-10 max-w-xl animate_animated animate_fadeInUp">
+    <span class="badge badge-warning mb-4">Últimas 10 vagas!</span>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Transforme Sua Vida Agora</h1>
+    <p class="mb-6 text-lg md:text-xl">Landing page moderna, interativa e otimizada para conversão.</p>
+    <button x-data @click="alert('Clicou!')" class="btn btn-primary btn-lg px-6 py-3">Quero Garantir Minha Vaga</button>
+    <div class="mt-4 badge badge-success">Garantia de satisfação 7 dias</div>
+    <div class="mt-4 text-red-500 font-bold text-lg">Oferta expira em: <span id="countdown">00:30:00</span></div>
   </div>
-  <div class="container center-align white-text" style="position: relative; top:50%;">
-    <div class="highlight-yellow badge white-text">Últimas 10 vagas!</div>
-    <h1 class="header">Transforme Sua Vida Agora</h1>
-    <p class="flow-text">Visual moderno, interativo e otimizado para conversão.</p>
-    <a class="btn-large waves-effect waves-light cta-primary modal-trigger" href="#contact-modal">Quero Garantir Minha Vaga</a>
-    <div class="trust-green selo white-text">Garantia de satisfação 7 dias</div>
-    <div class="countdown" id="countdown">Oferta expira em: 00:30:00</div>
-  </div>
-</div>
+</section>
 
 <!-- WhatsApp flutuante -->
-<a href="https://wa.me/5511999999999" class="btn-floating btn-large green darken-2 sticky-cta waves-effect waves-light" target="_blank">
-  <i class="material-icons">chat</i>
-</a>
+<a href="https://wa.me/5511999999999" class="btn btn-circle btn-success sticky-cta" target="_blank">💬</a>
 
-<!-- Conteúdos (cards, bônus, depoimentos) -->
-
-<!-- Footer -->
-<footer class="footer center-align">
-  <div class="container">
-    <p>&copy; 2025 Minha Marca. Todos os direitos reservados.</p>
-    <p>Email: contato@minhamarca.com | Telefone: (00) 1234-5678</p>
+<!-- Serviços com scroll animation -->
+<section id="services" class="py-16 container mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="card bg-white shadow-lg p-6">Design Moderno</div>
+    <div class="card bg-white shadow-lg p-6">Responsivo</div>
+    <div class="card bg-white shadow-lg p-6">Interativo</div>
   </div>
+</section>
+
+<!-- Depoimentos -->
+<section id="testimonials" class="py-16 bg-gray-200">
+  <h2 class="text-3xl font-bold text-center mb-12">Depoimentos</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="card p-6 bg-blue-600 text-white rounded shadow-lg">"Excelente design e responsividade!" - João</div>
+    <div class="card p-6 bg-purple-600 text-white rounded shadow-lg">"Landing page moderna e interativa!" - Maria</div>
+    <div class="card p-6 bg-red-600 text-white rounded shadow-lg">"Facilidade de navegação e visual incrível!" - Carlos</div>
+  </div>
+</section>
+
+<!-- Contato / Footer -->
+<footer id="contact" class="py-12 bg-blue-800 text-white text-center">
+  <p>&copy; 2025 Minha Marca. Todos os direitos reservados.</p>
+  <p>Email: contato@minhamarca.com | Telefone: (00) 1234-5678</p>
+  <p class="text-sm text-gray-300 mt-2">Visitas nesta sessão: <span id="visit-count">0</span></p>
 </footer>
 
-<!-- Materialize JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.1/lottie.min.js"></script>
+
+<!-- Hotjar / Clarity -->
 <script>
-// Lazy load simples
-document.addEventListener("DOMContentLoaded", function() {
-  const lazyImages = document.querySelectorAll('img.lazy');
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.remove('lazy');
-        observer.unobserve(img);
-      }
-    });
-  });
-  lazyImages.forEach(img => imageObserver.observe(img));
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:1234567,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
 
-  // Inicialização Materialize
-  M.Parallax.init(document.querySelectorAll('.parallax'));
-  M.Carousel.init(document.querySelectorAll('.carousel'), { fullWidth: true, indicators: true });
-  M.Modal.init(document.querySelectorAll('.modal'));
-  M.Sidenav.init(document.querySelectorAll('.sidenav'));
+<script>
+document.addEventListener('DOMContentLoaded', function(){
 
-  // Fade-in do hero, cards e bônus
-  setTimeout(() => document.querySelector('.hero').classList.add('show'), 100);
-  const cards = document.querySelectorAll('.card.hoverable, .bonus-card');
-  cards.forEach((card, i) => setTimeout(() => card.classList.add('show'), 300 + i * 200));
-
-  // Carousel autoplay
-  const carouselElems = document.querySelectorAll('.carousel');
-  carouselElems.forEach(carousel => {
-    const instance = M.Carousel.getInstance(carousel);
-    setInterval(() => { instance.next(); }, 5000);
-  });
-
-  // Contador regressivo (30 minutos)
+  // Contador regressivo
   let countdownTime = 30*60;
   const countdownEl = document.getElementById('countdown');
-  function updateCountdown() {
+  function updateCountdown(){
     const minutes = Math.floor(countdownTime/60).toString().padStart(2,'0');
     const seconds = (countdownTime%60).toString().padStart(2,'0');
-    countdownEl.textContent = Oferta expira em: 00:${minutes}:${seconds};
-    if(countdownTime>0) countdownTime--; else { countdownEl.textContent="Oferta Expirada!"; countdownEl.style.color="#B71C1C"; }
+    countdownEl.textContent = 00:${minutes}:${seconds};
+    if(countdownTime>0) countdownTime--; else countdownEl.textContent="Oferta Expirada!";
   }
   setInterval(updateCountdown,1000);
   updateCountdown();
+
+  // Contador de visitas local
+  let visitCount = parseInt(sessionStorage.getItem('visitCount')||'0');
+  visitCount++;
+  sessionStorage.setItem('visitCount', visitCount);
+  document.getElementById('visit-count').textContent = visitCount;
+
+  // GSAP fade-in para cards ao scroll
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('show');}
+    });
+  },{threshold:0.3});
+  cards.forEach(card=>observer.observe(card));
+
+  // Lottie animation hero
+  lottie.loadAnimation({
+    container: document.getElementById('lottie-hero'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://assets9.lottiefiles.com/packages/lf20_tfb3estd.json'
+  });
+
 });
 </script>
 </body>
