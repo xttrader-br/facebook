@@ -175,6 +175,74 @@
             from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
+        
+        /* Reduced Friction Elements */
+        .micro-interaction {
+            transition: all 0.2s ease;
+        }
+        
+        .micro-interaction:hover {
+            transform: translateY(-2px);
+        }
+        
+        .trust-badge {
+            animation: trustFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes trustFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .urgency-timer {
+            background: linear-gradient(45deg, #ff4757, #ff3742);
+            animation: urgencyPulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes urgencyPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+        }
+        
+        .social-proof-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 300px;
+            animation: slideInLeft 0.5s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .one-click-buy {
+            background: linear-gradient(135deg, #2ed573, #1e90ff);
+            box-shadow: 0 10px 25px rgba(46, 213, 115, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .one-click-buy:hover {
+            box-shadow: 0 15px 35px rgba(46, 213, 115, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .benefit-stack {
+            position: relative;
+        }
+        
+        .benefit-stack::after {
+            content: "✓";
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2ed573;
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +257,22 @@
                 <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
                     Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade e recuperarem o controle total de suas vidas
                 </p>
+                
+                <!-- Trust indicators -->
+                <div class="flex justify-center items-center space-x-6 mb-8 text-yellow-300">
+                    <div class="flex items-center trust-badge">
+                        <i class="fas fa-star mr-1"></i>
+                        <span class="text-sm font-semibold">4.9/5 (2.847 avaliações)</span>
+                    </div>
+                    <div class="flex items-center trust-badge">
+                        <i class="fas fa-users mr-1"></i>
+                        <span class="text-sm font-semibold">+10.000 alunos</span>
+                    </div>
+                    <div class="flex items-center trust-badge">
+                        <i class="fas fa-medal mr-1"></i>
+                        <span class="text-sm font-semibold">Método científico</span>
+                    </div>
+                </div>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                     <button class="btn btn-warning btn-lg pulse-btn text-lg font-semibold shadow-2xl" onclick="scrollToPricing()">
                         <i class="fas fa-rocket mr-2"></i>
@@ -451,7 +535,14 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+    <section class="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white relative overflow-hidden">
+        <!-- Urgency Timer -->
+        <div class="urgency-timer text-center py-3 mb-8">
+            <div class="container mx-auto px-4">
+                <p class="text-sm font-semibold">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" class="font-bold">23:45:12</span></p>
+            </div>
+        </div>
+        
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-6xl font-bold mb-6">
                 Não Deixe a Ansiedade Controlar Sua Vida
@@ -464,26 +555,54 @@
                 <div class="text-3xl font-bold text-red-500 line-through mb-2">R$ 347</div>
                 <div class="text-5xl font-bold text-green-600 mb-4">R$ 47</div>
                 <p class="text-sm opacity-70">Oferta por tempo limitado</p>
+                
+                <!-- Value Stack -->
+                <div class="mt-4 text-left space-y-1 text-sm text-gray-600">
+                    <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Acesso vitalício</div>
+                    <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suporte 24/7</div>
+                    <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Certificado incluso</div>
+                    <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Garantia 7 dias</div>
+                </div>
             </div>
             
-            <button class="btn btn-warning btn-lg pulse-btn text-xl font-bold px-8 py-4 shadow-2xl">
-                <i class="fas fa-shopping-cart mr-2"></i>
-                COMPRAR AGORA - 86% OFF
-            </button>
+            <!-- One-Click Purchase -->
+            <div class="space-y-4">
+                <button class="one-click-buy text-white btn-lg pulse-btn text-xl font-bold px-12 py-6 rounded-full border-none">
+                    <i class="fas fa-credit-card mr-2"></i>
+                    COMPRAR AGORA - 86% OFF
+                </button>
+                
+                <!-- Multiple Payment Options -->
+                <div class="flex justify-center items-center space-x-4 text-sm opacity-80">
+                    <span>💳 Cartão</span>
+                    <span>|</span>
+                    <span>📱 PIX</span>
+                    <span>|</span>
+                    <span>🏦 Boleto</span>
+                    <span>|</span>
+                    <span>💰 PayPal</span>
+                </div>
+            </div>
             
             <div class="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                <div class="flex items-center">
+                <div class="flex items-center micro-interaction">
                     <i class="fas fa-shield-alt text-2xl text-yellow-300 mr-2"></i>
                     <span class="font-semibold">Garantia de 7 dias</span>
                 </div>
-                <div class="flex items-center">
-                    <i class="fas fa-credit-card text-2xl text-yellow-300 mr-2"></i>
+                <div class="flex items-center micro-interaction">
+                    <i class="fas fa-bolt text-2xl text-yellow-300 mr-2"></i>
                     <span class="font-semibold">Acesso imediato</span>
                 </div>
-                <div class="flex items-center">
-                    <i class="fas fa-mobile-alt text-2xl text-yellow-300 mr-2"></i>
+                <div class="flex items-center micro-interaction">
+                    <i class="fas fa-infinity text-2xl text-yellow-300 mr-2"></i>
                     <span class="font-semibold">Acesso vitalício</span>
                 </div>
+            </div>
+            
+            <!-- Social Proof -->
+            <div class="mt-8 bg-white bg-opacity-20 backdrop-blur rounded-xl p-4 max-w-2xl mx-auto">
+                <p class="text-sm mb-2">⭐⭐⭐⭐⭐ "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva</p>
+                <p class="text-xs opacity-75">Mais de 847 pessoas compraram nas últimas 24 horas</p>
             </div>
         </div>
     </section>
@@ -596,6 +715,23 @@
         </div>
     </section>
 
+    <!-- Social Proof Popup -->
+    <div class="social-proof-popup bg-white rounded-lg shadow-2xl p-4 border-l-4 border-green-500" id="socialProof" style="display: none;">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                <i class="fas fa-user text-white"></i>
+            </div>
+            <div class="flex-1">
+                <p class="text-sm font-semibold text-gray-800" id="proofName">Maria Silva</p>
+                <p class="text-xs text-gray-600" id="proofAction">acabou de comprar o curso</p>
+                <p class="text-xs text-green-600">há 3 minutos - São Paulo, SP</p>
+            </div>
+            <button onclick="hideSocialProof()" class="text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4 text-center">
@@ -682,6 +818,76 @@
             if (section.querySelector('.animated-bullet')) {
                 observer.observe(section);
             }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const hours = Math.floor(Math.random() * 2) + 22; // 22-23 hours
+            const minutes = Math.floor(Math.random() * 60);
+            const seconds = Math.floor(Math.random() * 60);
+            
+            const countdown = document.getElementById('countdown');
+            if (countdown) {
+                countdown.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Social Proof Notifications
+        const socialProofNames = [
+            'Maria Silva', 'João Santos', 'Ana Costa', 'Pedro Lima', 'Carla Souza',
+            'Lucas Oliveira', 'Fernanda Rocha', 'Rafael Nunes', 'Juliana Alves', 'Marcos Pereira'
+        ];
+
+        const socialProofCities = [
+            'São Paulo, SP', 'Rio de Janeiro, RJ', 'Belo Horizonte, MG', 'Salvador, BA',
+            'Fortaleza, CE', 'Brasília, DF', 'Curitiba, PR', 'Recife, PE', 'Porto Alegre, RS'
+        ];
+
+        function showSocialProof() {
+            const popup = document.getElementById('socialProof');
+            const nameEl = document.getElementById('proofName');
+            const actionEl = document.getElementById('proofAction');
+            
+            if (popup && nameEl && actionEl) {
+                const randomName = socialProofNames[Math.floor(Math.random() * socialProofNames.length)];
+                const randomCity = socialProofCities[Math.floor(Math.random() * socialProofCities.length)];
+                const randomMinutes = Math.floor(Math.random() * 10) + 1;
+                
+                nameEl.textContent = randomName;
+                actionEl.innerHTML = `acabou de comprar o curso<br><span class="text-xs text-green-600">há ${randomMinutes} minutos - ${randomCity}</span>`;
+                
+                popup.style.display = 'block';
+                
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function hideSocialProof() {
+            document.getElementById('socialProof').style.display = 'none';
+        }
+
+        // Initialize social proof
+        setTimeout(() => {
+            showSocialProof();
+            setInterval(showSocialProof, 15000); // Show every 15 seconds
+        }, 3000);
+
+        // Update countdown every few seconds for realism
+        updateCountdown();
+        setInterval(updateCountdown, 5000);
+
+        // Enhanced CTA interactions
+        document.querySelectorAll('.one-click-buy').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Visual feedback
+                this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>PROCESSANDO...';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA - 86% OFF';
+                }, 1500);
+            });
         });
 
         // Smooth scroll to pricing section
