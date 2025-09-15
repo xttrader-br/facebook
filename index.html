@@ -3,56 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page Material Design</title>
-  <!-- Materialize CSS via CDN -->
+  <title>Landing Page Pro Personalizada</title>
+
+  <!-- Materialize CSS CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Roboto', sans-serif; }
+
+    /* Hero */
+    .hero { height: 80vh; opacity: 0; transform: translateY(30px); transition: opacity 1s, transform 1s; }
+    .hero.show { opacity: 1; transform: translateY(0); }
+
+    /* Cards */
+    .card.hoverable { transition: transform 0.5s, opacity 0.5s; opacity: 0; transform: translateY(20px); }
+    .card.hoverable.show { opacity: 1; transform: translateY(0); }
+
+    /* Sticky WhatsApp */
+    .sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+
+    /* Footer */
+    .footer { padding: 40px 20px; background-color: #123456; color: white; }
+
+    /* Custom Brand Colors */
+    .brand-primary { background-color: #123456 !important; }
+    .brand-secondary { background-color: #f57c00 !important; }
+  </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="blue darken-2">
+  <!-- Navbar Responsiva -->
+  <nav class="brand-primary">
     <div class="nav-wrapper container">
       <a href="#!" class="brand-logo">Minha Marca</a>
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#!">Contato</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#testimonials">Depoimentos</a></li>
+        <li><a class="modal-trigger" href="#contact-modal">Contato</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="section blue lighten-5 center-align" style="padding: 100px 20px;">
-    <div class="container">
-      <h1 class="header">Landing moderna</h1>
-      <p class="flow-text">Feita com <b>Materialize</b>, seguindo o Material Design do Google. Bonita, responsiva e mobile-friendly.</p>
-      <a class="btn-large waves-effect waves-light blue darken-2" href="#cards">Começar agora</a>
-    </div>
-  </section>
+  <!-- Sidenav Mobile -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="#services">Serviços</a></li>
+    <li><a href="#testimonials">Depoimentos</a></li>
+    <li><a class="modal-trigger" href="#contact-modal">Contato</a></li>
+  </ul>
 
-  <!-- Cards -->
-  <section class="section" id="cards">
+  <!-- Hero com Parallax -->
+  <div class="parallax-container hero">
+    <div class="parallax"><img src="https://images.unsplash.com/photo-1612831455540-9c1b6ef95b77?auto=format&fit=crop&w=1470&q=80" alt="Hero"></div>
+    <div class="container center-align white-text" style="position: relative; top: 50%;">
+      <h1 class="header">Landing Personalizada</h1>
+      <p class="flow-text">Visual moderno, interativo e totalmente responsivo.</p>
+      <a class="btn-large waves-effect waves-light brand-secondary modal-trigger" href="#contact-modal">Entre em Contato</a>
+    </div>
+  </div>
+
+  <!-- Sticky CTA WhatsApp -->
+  <a href="https://wa.me/5511999999999" class="btn-floating btn-large green darken-2 sticky-cta waves-effect waves-light" target="_blank">
+    <i class="material-icons">chat</i>
+  </a>
+
+  <!-- Seção de Serviços / Cards -->
+  <section class="section" id="services">
     <div class="container">
+      <h4 class="center-align">Nossos Serviços</h4>
       <div class="row">
         <div class="col s12 m4">
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content center-align">
-              <span class="card-title">Fácil</span>
-              <p>Componentes prontos com efeito ripple e sombras.</p>
+              <span class="card-title">Design Moderno</span>
+              <p>Botões ripple, sombras suaves e cores da marca.</p>
             </div>
           </div>
         </div>
         <div class="col s12 m4">
-          <div class="card">
-            <div class="card-content center-align">
-              <span class="card-title">Bonito</span>
-              <p>Cores vibrantes e paleta harmoniosa do Google.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content center-align">
               <span class="card-title">Responsivo</span>
-              <p>Funciona em desktop, tablet e mobile automaticamente.</p>
+              <p>Funciona perfeitamente em desktop, tablet e mobile.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card hoverable">
+            <div class="card-content center-align">
+              <span class="card-title">Interativo</span>
+              <p>Modais, sliders e parallax para engajar os usuários.</p>
             </div>
           </div>
         </div>
@@ -60,7 +102,89 @@
     </div>
   </section>
 
-  <!-- Materialize JS via CDN -->
+  <!-- Slider de Depoimentos -->
+  <section class="section grey lighten-4" id="testimonials">
+    <div class="container">
+      <h4 class="center-align">Depoimentos</h4>
+      <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-item testimonial-slide white-text brand-primary">
+          <h5>João Silva</h5>
+          <p>"Excelente design e responsividade, recomendo muito!"</p>
+        </div>
+        <div class="carousel-item testimonial-slide white-text brand-secondary">
+          <h5>Maria Souza</h5>
+          <p>"Landing page moderna, com efeito parallax e interação perfeita."</p>
+        </div>
+        <div class="carousel-item testimonial-slide white-text blue darken-2">
+          <h5>Carlos Pereira</h5>
+          <p>"Facilidade de navegação e visual incrível. Material Design puro!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Contato -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <h4>Entre em Contato</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="name" type="text" class="validate" required>
+              <label for="name">Nome</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s12">
+              <textarea id="message" class="materialize-textarea" required></textarea>
+              <label for="message">Mensagem</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn brand-secondary waves-effect waves-light">Enviar</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer center-align">
+    <div class="container">
+      <p>&copy; 2025 Minha Marca. Todos os direitos reservados.</p>
+      <p>Email: contato@minhamarca.com | Telefone: (00) 1234-5678</p>
+    </div>
+  </footer>
+
+  <!-- Materialize JS CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Inicializa Parallax
+      var parallaxElems = document.querySelectorAll('.parallax');
+      M.Parallax.init(parallaxElems);
+
+      // Inicializa Carousel Slider
+      var carouselElems = document.querySelectorAll('.carousel');
+      M.Carousel.init(carouselElems, { fullWidth: true, indicators: true });
+
+      // Inicializa Modal
+      var modalElems = document.querySelectorAll('.modal');
+      M.Modal.init(modalElems);
+
+      // Inicializa Sidenav
+      var sidenavElems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(sidenavElems);
+
+      // Animações Fade-in
+      setTimeout(() => document.querySelector('.hero').classList.add('show'), 100);
+      const cards = document.querySelectorAll('.card.hoverable');
+      cards.forEach((card, i) => setTimeout(() => card.classList.add('show'), 300 + i*200));
+    });
+  </script>
+
 </body>
 </html>
