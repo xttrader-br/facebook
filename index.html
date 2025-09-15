@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page Pro Personalizada</title>
+  <title>Landing Page Pro Conversão</title>
 
   <!-- Materialize CSS CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Roboto', sans-serif; }
+    body { font-family: 'Roboto', sans-serif; background-color: #F5F5F5; }
 
     /* Hero */
     .hero { height: 80vh; opacity: 0; transform: translateY(30px); transition: opacity 1s, transform 1s; }
@@ -25,11 +25,15 @@
     .sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
 
     /* Footer */
-    .footer { padding: 40px 20px; background-color: #123456; color: white; }
+    .footer { padding: 40px 20px; background-color: #1565C0; color: white; }
 
-    /* Custom Brand Colors */
-    .brand-primary { background-color: #123456 !important; }
-    .brand-secondary { background-color: #f57c00 !important; }
+    /* Cores da paleta de conversão */
+    .brand-primary { background-color: #123456 !important; } /* hero / fundo navbar */
+    .cta-primary { background-color: #FF6A00 !important; } /* botão principal CTA */
+    .cta-secondary { background-color: #E53935 !important; } /* botão secundário / urgência */
+    .trust-green { background-color: #43A047 !important; } /* garantia / selo */
+    .highlight-purple { background-color: #8E24AA !important; } /* premium / destaque */
+    .highlight-yellow { background-color: #FBC02D !important; } /* escassez / badges */
   </style>
 </head>
 <body>
@@ -58,9 +62,9 @@
   <div class="parallax-container hero">
     <div class="parallax"><img src="https://images.unsplash.com/photo-1612831455540-9c1b6ef95b77?auto=format&fit=crop&w=1470&q=80" alt="Hero"></div>
     <div class="container center-align white-text" style="position: relative; top: 50%;">
-      <h1 class="header">Landing Personalizada</h1>
-      <p class="flow-text">Visual moderno, interativo e totalmente responsivo.</p>
-      <a class="btn-large waves-effect waves-light brand-secondary modal-trigger" href="#contact-modal">Entre em Contato</a>
+      <h1 class="header">Landing para Conversão</h1>
+      <p class="flow-text">Visual moderno, interativo e otimizado para vender mais.</p>
+      <a class="btn-large waves-effect waves-light cta-primary modal-trigger" href="#contact-modal">Garanta Sua Vaga</a>
     </div>
   </div>
 
@@ -72,13 +76,13 @@
   <!-- Seção de Serviços / Cards -->
   <section class="section" id="services">
     <div class="container">
-      <h4 class="center-align">Nossos Serviços</h4>
+      <h4 class="center-align" style="color:#123456;">Nossos Serviços</h4>
       <div class="row">
         <div class="col s12 m4">
           <div class="card hoverable">
             <div class="card-content center-align">
               <span class="card-title">Design Moderno</span>
-              <p>Botões ripple, sombras suaves e cores da marca.</p>
+              <p>Botões ripple, sombras suaves e cores de alto impacto.</p>
             </div>
           </div>
         </div>
@@ -105,17 +109,17 @@
   <!-- Slider de Depoimentos -->
   <section class="section grey lighten-4" id="testimonials">
     <div class="container">
-      <h4 class="center-align">Depoimentos</h4>
+      <h4 class="center-align" style="color:#123456;">Depoimentos</h4>
       <div class="carousel carousel-slider center" data-indicators="true">
         <div class="carousel-item testimonial-slide white-text brand-primary">
           <h5>João Silva</h5>
           <p>"Excelente design e responsividade, recomendo muito!"</p>
         </div>
-        <div class="carousel-item testimonial-slide white-text brand-secondary">
+        <div class="carousel-item testimonial-slide white-text highlight-purple">
           <h5>Maria Souza</h5>
           <p>"Landing page moderna, com efeito parallax e interação perfeita."</p>
         </div>
-        <div class="carousel-item testimonial-slide white-text blue darken-2">
+        <div class="carousel-item testimonial-slide white-text cta-secondary">
           <h5>Carlos Pereira</h5>
           <p>"Facilidade de navegação e visual incrível. Material Design puro!"</p>
         </div>
@@ -147,7 +151,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close btn brand-secondary waves-effect waves-light">Enviar</a>
+      <a href="#!" class="modal-close btn cta-primary waves-effect waves-light">Enviar</a>
     </div>
   </div>
 
@@ -164,20 +168,16 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Inicializa Parallax
-      var parallaxElems = document.querySelectorAll('.parallax');
-      M.Parallax.init(parallaxElems);
+      M.Parallax.init(document.querySelectorAll('.parallax'));
 
       // Inicializa Carousel Slider
-      var carouselElems = document.querySelectorAll('.carousel');
-      M.Carousel.init(carouselElems, { fullWidth: true, indicators: true });
+      M.Carousel.init(document.querySelectorAll('.carousel'), { fullWidth: true, indicators: true });
 
       // Inicializa Modal
-      var modalElems = document.querySelectorAll('.modal');
-      M.Modal.init(modalElems);
+      M.Modal.init(document.querySelectorAll('.modal'));
 
       // Inicializa Sidenav
-      var sidenavElems = document.querySelectorAll('.sidenav');
-      M.Sidenav.init(sidenavElems);
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
       // Animações Fade-in
       setTimeout(() => document.querySelector('.hero').classList.add('show'), 100);
