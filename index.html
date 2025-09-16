@@ -7,17 +7,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css">
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- ========== TAILWIND + DAISYUI ========== -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!-- ========== BULMA + FONT AWESOME ========== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
   <!-- ========== ESTILOS PERSONALIZADOS ========== -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     * { font-family: 'Inter', sans-serif; }
 
     /* ===== PARALLAX HERO ===== */
@@ -25,24 +24,14 @@
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       position: relative;
       overflow: hidden;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 100vh;
     }
-    .hero-parallax::before {
+    .parallax-layer {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="300" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="400" cy="700" r="180" fill="rgba(255,255,255,0.05)"/></svg>') center/cover;
       z-index: 0;
-    }
-    .parallax-layer {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="40" r="5" fill="rgba(255,255,255,0.2)"/><circle cx="70" cy="60" r="7" fill="rgba(255,255,255,0.2)"/></svg>') repeat;
-      background-size: 300px 300px;
-      z-index: 1;
     }
 
     /* ===== GARANTIA DE 7 DIAS — CONTRASTE E ANIMAÇÃO ===== */
@@ -51,14 +40,13 @@
       overflow: hidden;
       background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
       background-size: 400% 400%;
-      animation: gradientShift 3s ease infinite;
+      animation: gradientShift 3s ease infinite, bounce 2s infinite;
       padding: 0.75rem 1.5rem;
       border-radius: 9999px;
       font-weight: 700;
       color: white;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      animation: bounce 2s infinite, gradientShift 3s ease infinite;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -77,6 +65,11 @@
       border-radius: 18px;
       position: relative;
       word-wrap: break-word;
+      animation: messageSlide 0.3s ease-out;
+    }
+    @keyframes messageSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .message-received {
       background: #f0f0f0;
@@ -121,124 +114,109 @@
     }
 
     /* ===== RESPONSIVIDADE ===== */
-    @media (max-width: 768px) {
-      .hero-parallax h1 { font-size: 2.5rem; }
-      .hero-parallax p { font-size: 1.1rem; padding: 0 1rem; }
+    @media screen and (max-width: 768px) {
+      .hero-parallax .title { font-size: 2.5rem; }
+      .hero-parallax .subtitle { font-size: 1.1rem; }
       .whatsapp-message { max-width: 240px; font-size: 0.875rem; }
+      .guarantee-badge { font-size: 0.9rem; padding: 0.5rem 1rem; }
     }
   </style>
 
   <!-- ========== HERO COM PARALLAX ========== -->
-  <section class="hero-parallax text-white relative">
+  <section class="hero is-fullheight hero-parallax" id="heroSection">
     <div class="parallax-layer" id="parallaxLayer"></div>
-    <div class="z-10 px-6 text-center max-w-4xl">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-        Liberte-se da <span class="text-yellow-300">Ansiedade</span> 
-        <br>Transforme Sua Vida
-      </h1>
-      <p class="text-xl md:text-2xl mb-8 opacity-90">
-        Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade
-      </p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-        <a href="#comprar" class="btn btn-warning btn-lg pulse-btn px-6 py-4 font-semibold shadow-2xl">
-          <i class="fas fa-rocket mr-2"></i>QUERO TRANSFORMAR MINHA VIDA AGORA
-        </a>
-        <div class="guarantee-badge">
-          <i class="fas fa-shield-alt mr-2"></i>Garantia de 7 dias
+    <div class="hero-body">
+      <div class="container hero-content">
+        <div class="has-text-centered">
+          <h1 class="title is-1 has-text-white has-text-weight-bold">
+            Liberte-se da <span class="has-text-warning">Ansiedade</span><br>
+            Transforme Sua Vida
+          </h1>
+          <p class="subtitle is-4 has-text-white-bis mb-6">
+            Descubra o método comprovado que já ajudou mais de 10.000 pessoas
+          </p>
+          <div class="buttons is-centered">
+            <a href="#comprar" class="button is-large is-warning pulse-btn" style="background: #ff6b35; color: white; font-weight: 700; padding: 1rem 2rem; border-radius: 50px;">
+              <i class="fas fa-rocket mr-2"></i>QUERO TRANSFORMAR MINHA VIDA AGORA
+            </a>
+            <div class="guarantee-badge">
+              <i class="fas fa-shield-alt mr-2"></i>Garantia de 7 dias
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <i class="fas fa-chevron-down text-2xl opacity-70"></i>
     </div>
   </section>
 
   <!-- ========== DEPOIMENTOS WHATSAPP ========== -->
-  <section id="depoimentos" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12">O Que Nossos Clientes Dizem</h2>
-      <div class="carousel carousel-center rounded-box space-x-6 p-6 bg-white shadow-xl max-w-4xl mx-auto">
-        <!-- Slide 1 -->
-        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
-          <div class="flex items-start space-x-3">
-            <div class="avatar">
-              <div class="w-12 rounded-full">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" />
+  <section id="depoimentos" class="section" style="background-color: #fafafa;">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">O Que Nossos Clientes Dizem</h2>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="box p-4" style="background: #f0f2f5; border-radius: 15px;">
+            <div class="media mb-4">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <div class="has-background-pink has-text-white has-text-weight-bold is-flex is-align-items-center is-justify-content-center" style="width: 48px; height: 48px; border-radius: 50%;">M</div>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="has-text-weight-semibold">Maria Silva</p>
+                <p class="is-size-7 has-text-grey">Online agora</p>
               </div>
             </div>
-            <div class="flex-1">
-              <div class="whatsapp-message message-received">
-                <p class="text-sm">Gente, não acredito! 😭 Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
-                <div class="message-time">14:32</div>
-              </div>
+            <div class="whatsapp-message message-received">
+              <p>Gente, não acredito! 😭</p>
+              <div class="message-time">14:32</div>
             </div>
-          </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
-          <div class="flex items-start space-x-3">
-            <div class="avatar">
-              <div class="w-12 rounded-full">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Joao" />
-              </div>
+            <div class="whatsapp-message message-received">
+              <p>Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
+              <div class="message-time">14:32</div>
             </div>
-            <div class="flex-1">
-              <div class="whatsapp-message message-received">
-                <p class="text-sm">Cara, esse método é INCRÍVEL! 🔥 2 meses sem crise de ansiedade!</p>
-                <div class="message-time">15:46</div>
-              </div>
+            <div class="whatsapp-message message-received">
+              <p>Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava! 🚀✨</p>
+              <div class="message-time">14:33</div>
             </div>
           </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
-          <div class="flex items-start space-x-3">
-            <div class="avatar">
-              <div class="w-12 rounded-full">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ana" />
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="whatsapp-message message-received">
-                <p class="text-sm">Depois de anos fazendo terapia, encontrei neste curso o que precisava 💪</p>
-                <div class="message-time">16:21</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Bullets Animados -->
-      <div class="flex justify-center mt-8 space-x-2">
-        <span class="animated-bullet" style="animation-delay: 0s;"></span>
-        <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
-        <span class="animated-bullet" style="animation-delay: 0.6s;"></span>
+          <!-- Bullets Animados -->
+          <div class="has-text-centered mt-4">
+            <span class="animated-bullet" style="animation-delay: 0s;"></span>
+            <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
+            <span class="animated-bullet" style="animation-delay: 0.6s;"></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========== CTA FINAL COM GARANTIA ========== -->
-  <section id="comprar" class="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">Sua Vida sem Ansiedade Começa Agora</h2>
-      <div class="bg-white text-gray-800 p-8 rounded-2xl inline-block mb-8">
-        <div class="text-2xl line-through text-red-500 mb-2">R$ 347</div>
-        <div class="text-5xl font-bold text-green-600 mb-2">R$ 47</div>
-        <p class="text-sm opacity-70">86% OFF — Oferta por tempo limitado</p>
+  <section id="comprar" class="section" style="background: linear-gradient(135deg, #ff6348, #ff4757);">
+    <div class="container has-text-centered">
+      <h2 class="title is-1 has-text-white mb-5">Sua Vida sem Ansiedade Começa Agora</h2>
+      <div class="box is-inline-block mb-6" style="background: white; padding: 2rem; border-radius: 15px;">
+        <p class="title is-4 has-text-danger has-text-decoration-line-through">R$ 347</p>
+        <p class="title is-1 has-text-success has-text-weight-bold">R$ 47</p>
+        <p class="is-size-7 has-text-grey">86% OFF — Oferta por tempo limitado</p>
       </div>
-      <a href="https://seusite.com/checkout" class="btn btn-lg btn-accent pulse-btn text-white font-black px-8 py-5 rounded-full text-xl shadow-2xl">
+      <a href="https://seusite.com/checkout" class="button is-large pulse-btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; font-weight: 800; padding: 1rem 2rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(255,107,53,0.4);">
         <i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA — GARANTIA DE 7 DIAS
       </a>
-      <div class="mt-6 flex justify-center items-center space-x-6 text-sm">
-        <span>💳 Cartão</span><span>📱 PIX</span><span>⏱️ Acesso Imediato</span>
+      <div class="mt-4 is-flex is-justify-content-center is-align-items-center" style="gap: 1.5rem;">
+        <span class="has-text-white">💳 Cartão</span>
+        <span class="has-text-white">📱 PIX</span>
+        <span class="has-text-white">⏱️ Acesso Imediato</span>
       </div>
     </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="py-8 bg-gray-800 text-white text-center text-sm">
-    <p>© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
-    <p class="mt-1 opacity-75">Este produto não substitui acompanhamento médico.</p>
+  <footer class="footer has-background-dark has-text-white p-5">
+    <div class="content has-text-centered">
+      <p>© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
+      <p class="is-size-7">Este produto não substitui acompanhamento médico.</p>
+    </div>
   </footer>
 
   <!-- ========== SCRIPTS ========== -->
