@@ -1,113 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<body class="bg-base-100 font-sans">
+<html lang="pt-BR" data-theme="light">
+<body class="font-sans">
 
-  <!-- Preload e DNS Prefetch -->
+  <!-- ========== PRÉ-CARREGAMENTO & OTIMIZAÇÃO ========== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css">
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- Tailwind + DaisyUI -->
+  <!-- ========== TAILWIND + DAISYUI ========== -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
+  <!-- ========== ESTILOS PERSONALIZADOS ========== -->
   <style>
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100vh;
-    }
-    .whatsapp-bubble {
-      max-width: 80%;
-      padding: 1rem;
-      border-radius: 1.5rem;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+
+    /* ===== PARALLAX HERO ===== */
+    .hero-parallax {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       position: relative;
-      margin-bottom: 1rem;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .user-bubble {
-      background-color: #dcf8c6;
-      margin-left: auto;
-      border-bottom-right-radius: 0.5rem;
-    }
-    .testimonial-bubble {
-      background-color: #ffffff;
-      border: 1px solid #e5e5e5;
-      border-bottom-left-radius: 0.5rem;
-    }
-    .animated-bullet::before {
+    .hero-parallax::before {
       content: '';
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #3b82f6;
-      margin: 0 4px;
-      animation: pulse 1.5s infinite;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="300" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="400" cy="700" r="180" fill="rgba(255,255,255,0.05)"/></svg>') center/cover;
+      z-index: 0;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.7; }
+    .parallax-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="40" r="5" fill="rgba(255,255,255,0.2)"/><circle cx="70" cy="60" r="7" fill="rgba(255,255,255,0.2)"/></svg>') repeat;
+      background-size: 300px 300px;
+      z-index: 1;
     }
+
+    /* ===== GARANTIA DE 7 DIAS — CONTRASTE E ANIMAÇÃO ===== */
     .guarantee-badge {
-      animation: bounce 2s infinite;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: bounce 2s infinite, gradientShift 3s ease infinite;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* ===== DEPOIMENTOS WHATSAPP + BULLETS ANIMADOS ===== */
+    .whatsapp-message {
+      max-width: 280px;
+      margin: 10px;
+      padding: 12px 16px;
+      border-radius: 18px;
+      position: relative;
+      word-wrap: break-word;
+    }
+    .message-received {
+      background: #f0f0f0;
+      border-bottom-left-radius: 4px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .message-sent {
+      background: #dcf8c6;
+      border-bottom-right-radius: 4px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .message-time {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+      text-align: right;
+    }
+    .animated-bullet {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3b82f6;
+      margin: 0 4px;
+      animation: pulseBullet 1.5s infinite;
+    }
+    @keyframes pulseBullet {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    /* ===== BOTÕES DE CONVERSÃO ===== */
+    .pulse-btn {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 768px) {
+      .hero-parallax h1 { font-size: 2.5rem; }
+      .hero-parallax p { font-size: 1.1rem; padding: 0 1rem; }
+      .whatsapp-message { max-width: 240px; font-size: 0.875rem; }
     }
   </style>
 
-  <!-- Hero com Parallax -->
-  <div class="parallax bg-gradient-to-r from-blue-900 to-indigo-800 flex items-center justify-center text-center text-white relative overflow-hidden"
-       style="background-image: url('https://images.unsplash.com/photo-1506148453035-29a8a8e6c8a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
-    <div class="absolute inset-0 bg-black opacity-40"></div>
-    <div class="relative z-10 px-6 max-w-4xl">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
-        Acabe com a Ansiedade <span class="text-yellow-300">sem remédios</span>
+  <!-- ========== HERO COM PARALLAX ========== -->
+  <section class="hero-parallax text-white relative">
+    <div class="parallax-layer" id="parallaxLayer"></div>
+    <div class="z-10 px-6 text-center max-w-4xl">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        Liberte-se da <span class="text-yellow-300">Ansiedade</span> 
+        <br>Transforme Sua Vida
       </h1>
-      <p class="text-xl md:text-2xl mb-8 drop-shadow">
-        Descubra o método natural que já ajudou mais de 12.000 pessoas a recuperarem o controle da mente e da vida.
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade
       </p>
-      <div class="space-x-4">
-        <a href="#comprar" class="btn btn-lg btn-primary glass text-white font-bold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform">
-          🚀 QUERO ME LIVRAR DA ANSIEDADE
+      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+        <a href="#comprar" class="btn btn-warning btn-lg pulse-btn px-6 py-4 font-semibold shadow-2xl">
+          <i class="fas fa-rocket mr-2"></i>QUERO TRANSFORMAR MINHA VIDA AGORA
         </a>
-        <a href="#depoimentos" class="btn btn-lg btn-outline glass text-white font-bold px-8 py-4 rounded-full backdrop-blur-sm hover:bg-white hover:bg-opacity-20 transition">
-          💬 VEJA DEPOIMENTOS
-        </a>
+        <div class="guarantee-badge">
+          <i class="fas fa-shield-alt mr-2"></i>Garantia de 7 dias
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Garantia de 7 Dias (com animação e contraste melhorado) -->
-  <section class="py-16 bg-red-600 text-white text-center relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-red-700 to-pink-600 opacity-80"></div>
-    <div class="relative z-10 max-w-4xl mx-auto px-6">
-      <div class="guarantee-badge inline-block mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-yellow-300 drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <h2 class="text-4xl font-extrabold mb-4 drop-shadow-lg">GARANTIA INCONDICIONAL DE 7 DIAS</h2>
-      <p class="text-xl mb-6 max-w-3xl mx-auto drop-shadow">
-        Se em 7 dias você não sentir uma melhora real na sua ansiedade, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
-      </p>
-      <a href="#comprar" class="btn btn-lg btn-warning text-black font-bold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform">
-        👉 GARANTIR ACESSO AGORA
-      </a>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-2xl opacity-70"></i>
     </div>
   </section>
 
-  <!-- Depoimentos no estilo WhatsApp -->
-  <section id="depoimentos" class="py-20 bg-base-200">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12">O que nossos alunos estão dizendo</h2>
-      <div class="carousel carousel-center rounded-box space-x-6 p-6 bg-white shadow-xl">
-        <!-- Depoimento 1 -->
+  <!-- ========== DEPOIMENTOS WHATSAPP ========== -->
+  <section id="depoimentos" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">O Que Nossos Clientes Dizem</h2>
+      <div class="carousel carousel-center rounded-box space-x-6 p-6 bg-white shadow-xl max-w-4xl mx-auto">
+        <!-- Slide 1 -->
+        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
+          <div class="flex items-start space-x-3">
+            <div class="avatar">
+              <div class="w-12 rounded-full">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" />
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="whatsapp-message message-received">
+                <p class="text-sm">Gente, não acredito! 😭 Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
+                <div class="message-time">14:32</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
+          <div class="flex items-start space-x-3">
+            <div class="avatar">
+              <div class="w-12 rounded-full">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Joao" />
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="whatsapp-message message-received">
+                <p class="text-sm">Cara, esse método é INCRÍVEL! 🔥 2 meses sem crise de ansiedade!</p>
+                <div class="message-time">15:46</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
         <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
           <div class="flex items-start space-x-3">
             <div class="avatar">
@@ -116,76 +199,60 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="whatsapp-bubble testimonial-bubble shadow">
-                <p class="font-medium">Depois de 5 anos tomando remédios, em 3 semanas com o método eu parei tudo. Minha vida mudou!</p>
-                <div class="text-right text-xs text-gray-500 mt-2">— Ana, 28</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Depoimento 2 -->
-        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
-          <div class="flex items-start space-x-3">
-            <div class="avatar">
-              <div class="w-12 rounded-full">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos" />
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="whatsapp-bubble testimonial-bubble shadow">
-                <p class="font-medium">Não conseguia dormir, tinha pânico de sair de casa. Hoje viajo, trabalho e vivo sem medo. Gratidão!</p>
-                <div class="text-right text-xs text-gray-500 mt-2">— Carlos, 35</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Depoimento 3 -->
-        <div class="carousel-item bg-base-100 p-6 rounded-lg max-w-md">
-          <div class="flex items-start space-x-3">
-            <div class="avatar">
-              <div class="w-12 rounded-full">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Juliana" />
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="whatsapp-bubble user-bubble shadow">
-                <p class="font-medium">Usei por 4 dias e já senti diferença. O pior: não acreditei que funcionaria. Me surpreendi!</p>
-                <div class="text-right text-xs text-gray-700 mt-2">— Juliana, 22</div>
+              <div class="whatsapp-message message-received">
+                <p class="text-sm">Depois de anos fazendo terapia, encontrei neste curso o que precisava 💪</p>
+                <div class="message-time">16:21</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Bullets animados -->
+      <!-- Bullets Animados -->
       <div class="flex justify-center mt-8 space-x-2">
-        <span class="animated-bullet"></span>
-        <span class="animated-bullet"></span>
-        <span class="animated-bullet"></span>
+        <span class="animated-bullet" style="animation-delay: 0s;"></span>
+        <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
+        <span class="animated-bullet" style="animation-delay: 0.6s;"></span>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action Final -->
-  <section id="comprar" class="py-20 bg-gradient-to-r from-green-600 to-teal-500 text-white text-center">
+  <!-- ========== CTA FINAL COM GARANTIA ========== -->
+  <section id="comprar" class="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-extrabold mb-6">Pare de sofrer. Comece HOJE.</h2>
-      <p class="text-xl mb-8">Por apenas <span class="text-3xl font-bold line-through text-yellow-200">R$297</span> <span class="text-4xl font-black text-yellow-300">R$97</span></p>
-      <a href="https://seusite.com/checkout" class="btn btn-lg btn-accent glass text-white font-bold text-xl px-10 py-5 rounded-full shadow-2xl hover:scale-105 transition-transform">
-        🔥 QUERO MINHA VIDA DE VOLTA — GARANTIR COM DESCONTO
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Sua Vida sem Ansiedade Começa Agora</h2>
+      <div class="bg-white text-gray-800 p-8 rounded-2xl inline-block mb-8">
+        <div class="text-2xl line-through text-red-500 mb-2">R$ 347</div>
+        <div class="text-5xl font-bold text-green-600 mb-2">R$ 47</div>
+        <p class="text-sm opacity-70">86% OFF — Oferta por tempo limitado</p>
+      </div>
+      <a href="https://seusite.com/checkout" class="btn btn-lg btn-accent pulse-btn text-white font-black px-8 py-5 rounded-full text-xl shadow-2xl">
+        <i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA — GARANTIA DE 7 DIAS
       </a>
-      <p class="mt-6 text-sm opacity-90">🔒 Pagamento seguro • Acesso imediato • Garantia de 7 dias</p>
+      <div class="mt-6 flex justify-center items-center space-x-6 text-sm">
+        <span>💳 Cartão</span><span>📱 PIX</span><span>⏱️ Acesso Imediato</span>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-8 bg-base-300 text-center text-gray-600">
-    <p>© 2025 Seu Método Anti-Ansiedade. Todos os direitos reservados.</p>
-    <p class="text-sm mt-2">Este produto não substitui o acompanhamento médico.</p>
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-8 bg-gray-800 text-white text-center text-sm">
+    <p>© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
+    <p class="mt-1 opacity-75">Este produto não substitui acompanhamento médico.</p>
   </footer>
 
-  <!-- Script para animação dos bullets (opcional) -->
+  <!-- ========== SCRIPTS ========== -->
   <script>
+    // Parallax no Hero ao scroll
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const layer = document.getElementById('parallaxLayer');
+      if (layer) {
+        layer.style.backgroundPositionY = `${scrolled * 0.5}px`;
+      }
+    });
+
+    // Animação dos bullets com delay
     document.addEventListener('DOMContentLoaded', () => {
       const bullets = document.querySelectorAll('.animated-bullet');
       bullets.forEach((bullet, index) => {
