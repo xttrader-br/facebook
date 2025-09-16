@@ -11,7 +11,6 @@
             --primary: #4a90e2;
             --secondary: #50c878;
             --accent: #ff6b6b;
-            --yellow: #FFD700;
             --dark: #2c3e50;
             --light: #f8f9fa;
             --gradient: linear-gradient(135deg, #4a90e2, #50c878);
@@ -70,22 +69,12 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        .hero h1 .highlight {
-            color: var(--yellow);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-        }
-        
-        .hero p .highlight {
-            color: var(--yellow);
-            font-weight: bold;
         }
         
         .cta-button {
@@ -102,6 +91,7 @@
             border: none;
             cursor: pointer;
             margin: 10px;
+            min-width: 250px;
         }
         
         .cta-button:hover {
@@ -217,10 +207,6 @@
             margin-bottom: 20px;
         }
         
-        .solution-text h3 .highlight {
-            color: var(--yellow);
-        }
-        
         .solution-image {
             flex: 1;
             border-radius: 10px;
@@ -252,11 +238,6 @@
             color: var(--secondary);
             font-weight: bold;
             font-size: 1.2rem;
-        }
-        
-        .benefits-list li .highlight {
-            color: var(--yellow);
-            font-weight: bold;
         }
         
         /* Course Content */
@@ -311,11 +292,6 @@
         
         .module li {
             margin-bottom: 10px;
-        }
-        
-        .module li .highlight {
-            color: var(--yellow);
-            font-weight: bold;
         }
         
         /* Testimonials */
@@ -417,12 +393,14 @@
             max-width: 350px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
         }
         
         .pricing-card.featured {
             background: rgba(255,255,255,0.15);
             transform: scale(1.05);
             position: relative;
+            z-index: 2;
         }
         
         .pricing-card.featured::before {
@@ -521,11 +499,6 @@
             content: "-";
         }
         
-        .faq-answer .highlight {
-            color: var(--yellow);
-            font-weight: bold;
-        }
-        
         /* CTA Final */
         .final-cta {
             background: var(--dark);
@@ -537,10 +510,6 @@
         .final-cta h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-        }
-        
-        .final-cta h2 .highlight {
-            color: var(--yellow);
         }
         
         .final-cta p {
@@ -601,6 +570,52 @@
             font-size: 0.9rem;
         }
         
+        /* Trust Elements */
+        .trust-bar {
+            background: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .trust-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .trust-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .trust-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Mobile CTA Bar */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--accent);
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .mobile-cta .cta-button {
+            margin: 0;
+            width: 100%;
+            padding: 15px;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -622,18 +637,62 @@
             .footer-content {
                 flex-direction: column;
             }
+            
+            .mobile-cta {
+                display: block;
+            }
+            
+            .hero .cta-button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        
+        /* Animation for CTA buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .cta-button.primary {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
 <body>
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-icons">
+                <div class="trust-icon">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Garantia de 30 dias</span>
+                </div>
+                <div class="trust-icon">
+                    <i class="fas fa-lock"></i>
+                    <span>Pagamento seguro</span>
+                </div>
+                <div class="trust-icon">
+                    <i class="fas fa-users"></i>
+                    <span>+15.000 alunos</span>
+                </div>
+                <div class="trust-icon">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificado de conclusão</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1><span class="highlight">Supere a Ansiedade</span> e <span class="highlight">Recupere o Controle da Sua Vida</span></h1>
+                <h1>Supere a Ansiedade e Recupere o Controle da Sua Vida</h1>
                 <p>O curso completo que vai te ensinar técnicas práticas e cientificamente comprovadas para reduzir a ansiedade e viver com mais tranquilidade.</p>
                 <div>
-                    <a href="#pricing" class="cta-button">QUERO ME LIVRAR DA ANSIEDADE AGORA</a>
+                    <a href="#pricing" class="cta-button primary">QUERO ME LIVRAR DA ANSIEDADE AGORA</a>
                     <a href="#content" class="cta-button secondary">Saiba Mais</a>
                 </div>
             </div>
@@ -645,7 +704,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Você se identifica com isso?</h2>
-                <p>Milhões de pessoas sofrem com a <span class="highlight">ansiedade</span> todos os dias. Veja se algum desses sintomas é familiar para você:</p>
+                <p>Milhões de pessoas sofrem com a ansiedade todos os dias. Veja se algum desses sintomas é familiar para você:</p>
             </div>
             <div class="problem-cards">
                 <div class="problem-card">
@@ -661,12 +720,12 @@
                 <div class="problem-card">
                     <i class="fas fa-bed"></i>
                     <h3>Insônia</h3>
-                    <p>Tem dificuldade para dormir por causa da <span class="highlight">ansiedade</span>?</p>
+                    <p>Tem dificuldade para dormir por causa da ansiedade?</p>
                 </div>
                 <div class="problem-card">
                     <i class="fas fa-users"></i>
                     <h3>Evitação Social</h3>
-                    <p>Fica <span class="highlight">ansioso</span> em ambientes sociais ou situações novas?</p>
+                    <p>Fica ansioso em ambientes sociais ou situações novas?</p>
                 </div>
             </div>
         </div>
@@ -676,17 +735,17 @@
     <section class="solution">
         <div class="container">
             <div class="section-title">
-                <h2>Existe uma <span class="highlight">solução eficaz</span></h2>
-                <p>Nosso curso baseado em evidências científicas vai te ensinar a transformar sua relação com a <span class="highlight">ansiedade</span></p>
+                <h2>Existe uma solução eficaz</h2>
+                <p>Nosso curso baseado em evidências científicas vai te ensinar a transformar sua relação com a ansiedade</p>
             </div>
             <div class="solution-content">
                 <div class="solution-text">
-                    <h3>O <span class="highlight">Método Científico</span> para <span class="highlight">Superar a Ansiedade</span></h3>
+                    <h3>O Método Científico para Superar a Ansiedade</h3>
                     <p>Desenvolvido por especialistas em saúde mental, nosso curso combina as técnicas mais eficazes da terapia cognitivo-comportamental com práticas de mindfulness e técnicas de respiração.</p>
                     <ul class="benefits-list">
-                        <li>Reduza significativamente os sintomas de <span class="highlight">ansiedade</span> em 30 dias</li>
+                        <li>Reduza significativamente os sintomas de ansiedade em 30 dias</li>
                         <li>Aprenda a identificar e modificar padrões de pensamento negativo</li>
-                        <li>Desenvolva habilidades práticas para lidar com crises de <span class="highlight">ansiedade</span></li>
+                        <li>Desenvolva habilidades práticas para lidar com crises de ansiedade</li>
                         <li>Melhore sua qualidade de sono e bem-estar geral</li>
                         <li>Recupere sua confiança em situações sociais</li>
                     </ul>
@@ -703,18 +762,18 @@
     <section id="content" class="course-content">
         <div class="container">
             <div class="section-title">
-                <h2>O que você vai <span class="highlight">aprender</span></h2>
+                <h2>O que você vai aprender</h2>
                 <p>Um programa completo dividido em módulos progressivos</p>
             </div>
             <div class="modules">
                 <div class="module">
                     <div class="module-number">1</div>
-                    <h3>Entendendo a <span class="highlight">Ansiedade</span></h3>
+                    <h3>Entendendo a Ansiedade</h3>
                     <ul>
-                        <li>O que é <span class="highlight">ansiedade</span> e como ela funciona</li>
-                        <li>Tipos de transtornos de <span class="highlight">ansiedade</span></li>
+                        <li>O que é ansiedade e como ela funciona</li>
+                        <li>Tipos de transtornos de ansiedade</li>
                         <li>Como identificar seus gatilhos</li>
-                        <li>O ciclo da <span class="highlight">ansiedade</span></li>
+                        <li>O ciclo da ansiedade</li>
                     </ul>
                 </div>
                 <div class="module">
@@ -723,7 +782,7 @@
                     <ul>
                         <li>Respiração diafragmática</li>
                         <li>Técnica 4-7-8 para relaxamento</li>
-                        <li>Box breathing para <span class="highlight">controle imediato</span></li>
+                        <li>Box breathing para controle imediato</li>
                         <li>Práticas para dormir melhor</li>
                     </ul>
                 </div>
@@ -734,7 +793,7 @@
                         <li>Identificando pensamentos automáticos</li>
                         <li>Desafios cognitivos eficazes</li>
                         <li>Técnicas de reappraisal</li>
-                        <li>Construindo pensamentos mais <span class="highlight">equilibrados</span></li>
+                        <li>Construindo pensamentos mais equilibrados</li>
                     </ul>
                 </div>
                 <div class="module">
@@ -744,14 +803,14 @@
                         <li>Hierarquia de medos</li>
                         <li>Técnicas de exposição segura</li>
                         <li>Prevenção de resposta de fuga</li>
-                        <li>Construindo <span class="highlight">tolerância ao desconforto</span></li>
+                        <li>Construindo tolerância ao desconforto</li>
                     </ul>
                 </div>
                 <div class="module">
                     <div class="module-number">5</div>
                     <h3>Práticas de Mindfulness</h3>
                     <ul>
-                        <li>Meditação guiada para <span class="highlight">ansiedade</span></li>
+                        <li>Meditação guiada para ansiedade</li>
                         <li>Exercícios de atenção plena</li>
                         <li>Body scan para relaxamento</li>
                         <li>Integração diária da prática</li>
@@ -761,10 +820,10 @@
                     <div class="module-number">6</div>
                     <h3>Manutenção e Prevenção</h3>
                     <ul>
-                        <li>Criando um plano de <span class="highlight">manutenção pessoal</span></li>
+                        <li>Criando um plano de manutenção pessoal</li>
                         <li>Lidando com recaídas</li>
                         <li>Autocuidado e rotina saudável</li>
-                        <li>Recursos para <span class="highlight">suporte contínuo</span></li>
+                        <li>Recursos para suporte contínuo</li>
                     </ul>
                 </div>
             </div>
@@ -775,13 +834,13 @@
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Histórias de <span class="highlight">Transformação</span></h2>
+                <h2>Histórias de Transformação</h2>
                 <p>Veja o que nossos alunos dizem sobre os resultados obtidos</p>
             </div>
             <div class="testimonial-cards">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Antes do curso, eu mal conseguia sair de casa sem ter um ataque de pânico. Hoje, consigo viajar, trabalhar e aproveitar a vida sem <span class="highlight">medo constante</span>. O método funciona!"</p>
+                        <p>"Antes do curso, eu mal conseguia sair de casa sem ter um ataque de pânico. Hoje, consigo viajar, trabalhar e aproveitar a vida sem medo constante. O método funciona!"</p>
                         <div class="client">
                             <div class="client-avatar">
                                 <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente">
@@ -795,7 +854,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Como professor, a <span class="highlight">ansiedade social</span> me impediu de dar aulas por anos. Com as técnicas aprendidas, voltei a ensinar com <span class="highlight">confiança</span>. O curso mudou minha carreira e minha vida!"</p>
+                        <p>"Como professor, a ansiedade social me impediu de dar aulas por anos. Com as técnicas aprendidas, voltei a ensinar com confiança. O curso mudou minha carreira e minha vida!"</p>
                         <div class="client">
                             <div class="client-avatar">
                                 <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Cliente">
@@ -809,7 +868,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Tinha insônia há mais de 5 anos por causa da <span class="highlight">ansiedade</span>. Após aplicar as técnicas de respiração e mindfulness, agora durmo profundamente todas as noites. <span class="highlight">Gratidão eterna</span>!"</p>
+                        <p>"Tinha insônia há mais de 5 anos por causa da ansiedade. Após aplicar as técnicas de respiração e mindfulness, agora durmo profundamente todas as noites. Gratidão eterna!"</p>
                         <div class="client">
                             <div class="client-avatar">
                                 <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
@@ -829,7 +888,7 @@
     <section id="pricing" class="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Invista na sua <span class="highlight">saúde mental</span> hoje</h2>
+                <h2>Invista na sua saúde mental hoje</h2>
                 <p>Escolha o plano que melhor se adapta às suas necessidades</p>
             </div>
             <div class="pricing-cards">
@@ -889,7 +948,7 @@
                 <div class="faq-item">
                     <div class="faq-question">Quanto tempo leva para ver resultados?</div>
                     <div class="faq-answer">
-                        <p>A maioria dos alunos começam a perceber melhorias significativas em 2-3 semanas com prática diária de 15-20 minutos. Resultados mais substanciais são comuns após <span class="highlight">30 dias</span>.</p>
+                        <p>A maioria dos alunos começam a perceber melhorias significativas em 2-3 semanas com prática diária de 15-20 minutos. Resultados mais substanciais são comuns após 30 dias.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -901,13 +960,13 @@
                 <div class="faq-item">
                     <div class="faq-question">O acesso ao curso é vitalício?</div>
                     <div class="faq-answer">
-                        <p>Sim, uma vez adquirido, você tem acesso vitalício ao conteúdo do curso, incluindo <span class="highlight">atualizações futuras</span> sem custos adicionais.</p>
+                        <p>Sim, uma vez adquirido, você tem acesso vitalício ao conteúdo do curso, incluindo atualizações futuras sem custos adicionais.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Há garantia de satisfação?</div>
                     <div class="faq-answer">
-                        <p>Sim, oferecemos <span class="highlight">garantia de 30 dias</span>. Se você não estiver satisfeito com o curso por qualquer motivo, basta solicitar o reembolso que devolvemos 100% do seu investimento.</p>
+                        <p>Sim, oferecemos garantia de 30 dias. Se você não estiver satisfeito com o curso por qualquer motivo, basta solicitar o reembolso que devolvemos 100% do seu investimento.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -923,11 +982,16 @@
     <!-- Final CTA -->
     <section class="final-cta">
         <div class="container">
-            <h2>Não deixe a <span class="highlight">ansiedade</span> controlar sua vida por mais um dia</h2>
-            <p>Invista em você mesmo e comece sua jornada para uma vida mais <span class="highlight">tranquila</span> e <span class="highlight">equilibrada</span> agora mesmo.</p>
+            <h2>Não deixe a ansiedade controlar sua vida por mais um dia</h2>
+            <p>Invista em você mesmo e comece sua jornada para uma vida mais tranquila e equilibrada agora mesmo.</p>
             <a href="#pricing" class="cta-button">QUERO SUPERAR MINHA ANSIEDADE AGORA</a>
         </div>
     </section>
+
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta">
+        <a href="#pricing" class="cta-button">QUERO ME LIVRAR DA ANSIEDADE AGORA</a>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -999,6 +1063,17 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+        
+        // Close mobile CTA after purchase
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.getAttribute('href') === '#pricing') {
+                    setTimeout(() => {
+                        document.querySelector('.mobile-cta').style.display = 'none';
+                    }, 5000);
+                }
+            });
         });
     </script>
 </body>
