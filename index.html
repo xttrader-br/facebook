@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<body class="bg-light">
+<body class="font-sans">
 
   <!-- ========== PRÉ-CARREGAMENTO & OTIMIZAÇÃO ========== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- ========== BOOTSTRAP + FONT AWESOME ========== -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ========== PURE.CSS + FONT AWESOME ========== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- ========== ESTILOS PERSONALIZADOS ========== -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #f9fafb; }
 
     /* ===== PRELOADER ===== */
     #preloader {
@@ -49,11 +48,16 @@
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       position: relative; overflow: hidden; min-height: 100vh;
       background-attachment: fixed; background-position: center; background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
     }
     .hero-parallax::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="300" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="400" cy="700" r="180" fill="rgba(255,255,255,0.05)"/></svg>') center/cover;
       z-index: 0;
+    }
+    .hero-content {
+      position: relative; z-index: 1; text-align: center; padding: 2rem;
     }
 
     /* ===== GARANTIA DE 7 DIAS — CONTRASTE E ANIMAÇÃO ===== */
@@ -65,6 +69,7 @@
       padding: 0.75rem 1.5rem; border-radius: 50px;
       font-weight: 700; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      display: inline-block; margin-top: 1rem;
     }
     @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
@@ -84,7 +89,7 @@
     .message-time { font-size: 11px; color: #666; margin-top: 4px; text-align: right; }
     .animated-bullet {
       display: inline-block; width: 10px; height: 10px; border-radius: 50%;
-      background: #0d6efd; margin: 0 4px; animation: pulseBullet 1.5s infinite;
+      background: #007bff; margin: 0 4px; animation: pulseBullet 1.5s infinite;
     }
     @keyframes pulseBullet { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.6; } }
 
@@ -108,7 +113,29 @@
       .hero-parallax p { font-size: 1.1rem; padding: 0 1rem; }
       .whatsapp-message { max-width: 240px; font-size: 0.875rem; }
       .guarantee-badge { font-size: 0.9rem; padding: 0.5rem 1rem; }
+      .pure-g { padding: 0 1rem; }
     }
+
+    /* ===== CUSTOM PURE.CSS BUTTONS ===== */
+    .btn-warning {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: white; font-weight: 800; padding: 1rem 2rem; border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.4); border: none; cursor: pointer;
+    }
+    .btn-warning:hover {
+      background: linear-gradient(135deg, #e55a2b, #e8851a);
+      box-shadow: 0 6px 20px rgba(255,107,53,0.5); transform: translateY(-2px);
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease; margin-bottom: 1.5rem;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    /* ===== ICONS ===== */
+    .icon-lg { font-size: 2rem; margin-bottom: 1rem; }
   </style>
 
   <!-- ========== PRELOADER ========== -->
@@ -120,172 +147,133 @@
   </div>
 
   <!-- ========== HERO COM PARALLAX ========== -->
-  <section class="hero-parallax d-flex align-items-center text-white">
-    <div class="container text-center position-relative z-1">
-      <h1 class="display-3 fw-bold mb-4">
-        Liberte-se da <span class="text-warning">Ansiedade</span><br>
+  <section class="hero-parallax">
+    <div class="hero-content">
+      <h1 class="pure-u-1" style="font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">
+        Liberte-se da <span class="text-yellow-300">Ansiedade</span><br>
         Transforme Sua Vida
       </h1>
-      <p class="lead mb-5 opacity-90">
+      <p class="pure-u-1" style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem;">
         Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade
       </p>
 
-      <!-- Trust Badges -->
-      <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
-        <div class="badge bg-warning text-dark px-3 py-2">
-          <i class="fas fa-star me-1"></i> 4.9/5 (2.847 avaliações)
-        </div>
-        <div class="badge bg-warning text-dark px-3 py-2">
-          <i class="fas fa-users me-1"></i> +10.000 alunos
-        </div>
-        <div class="badge bg-warning text-dark px-3 py-2">
-          <i class="fas fa-medal me-1"></i> Método científico
-        </div>
-      </div>
-
-      <!-- CTA + Garantia -->
-      <div class="d-flex flex-column flex-md-row gap-3 justify-content-center align-items-center">
-        <a href="#comprar" class="btn btn-warning btn-lg pulse-btn px-5 py-3 fw-bold">
-          <i class="fas fa-rocket me-2"></i>QUERO TRANSFORMAR MINHA VIDA AGORA
-        </a>
-        <div class="guarantee-badge">
-          <i class="fas fa-shield-alt me-2"></i>Garantia de 7 dias
+      <div class="pure-u-1" style="margin-bottom: 2rem;">
+        <div class="pure-g" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <div class="pure-u-1 pure-u-md-1-3">
+            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-star text-yellow-300 mr-2"></i> 4.9/5 (2.847 avaliações)
+            </div>
+          </div>
+          <div class="pure-u-1 pure-u-md-1-3">
+            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-users text-yellow-300 mr-2"></i> +10.000 alunos
+            </div>
+          </div>
+          <div class="pure-u-1 pure-u-md-1-3">
+            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-medal text-yellow-300 mr-2"></i> Método científico
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="position-absolute bottom-0 start-50 translate-middle-x mb-5 animate__animated animate__bounce">
-        <i class="fas fa-chevron-down fs-3 opacity-75"></i>
+      <div class="pure-u-1">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+          <button class="btn-warning pulse-btn">
+            <i class="fas fa-rocket mr-2"></i>QUERO TRANSFORMAR MINHA VIDA AGORA
+          </button>
+          <div class="guarantee-badge">
+            <i class="fas fa-shield-alt mr-2"></i>Garantia de 7 dias
+          </div>
+        </div>
+      </div>
+
+      <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+        <i class="fas fa-chevron-down text-2xl opacity-75"></i>
       </div>
     </div>
   </section>
 
   <!-- ========== DEPOIMENTOS WHATSAPP ========== -->
-  <section id="depoimentos" class="py-5 py-md-6 bg-light">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="display-5 fw-bold">O Que Nossos Clientes Dizem</h2>
-        <p class="lead text-muted">Resultados reais de pessoas reais</p>
+  <section id="depoimentos" style="padding: 4rem 1rem; background: #f9fafb;">
+    <div class="pure-u-1" style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2.5rem; font-weight: 700; color: #333;">O Que Nossos Clientes Dizem</h2>
+      <p style="font-size: 1.1rem; color: #666;">Resultados reais de pessoas reais</p>
+    </div>
+
+    <div class="pure-u-1" style="text-align: center;">
+      <div class="whatsapp-container">
+        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+          <div style="width: 48px; height: 48px; background: #e74c3c; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">M</div>
+          <div>
+            <h4 style="font-weight: 600; margin: 0;">Maria Silva</h4>
+            <p style="font-size: 0.875rem; color: #666; margin: 0;">Online agora</p>
+          </div>
+        </div>
+        <div class="whatsapp-message message-received">
+          <p>Gente, não acredito! 😭</p>
+          <div class="message-time">14:32</div>
+        </div>
+        <div class="whatsapp-message message-received">
+          <p>Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
+          <div class="message-time">14:32</div>
+        </div>
+        <div class="whatsapp-message message-received">
+          <p>Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava! 🚀✨</p>
+          <div class="message-time">14:33</div>
+        </div>
       </div>
 
-      <div id="whatsappCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 450px;">
-        <div class="carousel-inner">
-          <!-- Slide 1 -->
-          <div class="carousel-item active">
-            <div class="whatsapp-container">
-              <div class="d-flex align-items-center mb-4">
-                <div class="flex-shrink-0">
-                  <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                    <span class="fw-bold">M</span>
-                  </div>
-                </div>
-                <div class="ms-3">
-                  <h6 class="fw-semibold mb-0">Maria Silva</h6>
-                  <small class="text-muted">Online agora</small>
-                </div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">Gente, não acredito! 😭</p>
-                <div class="message-time">14:32</div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
-                <div class="message-time">14:32</div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava! 🚀✨</p>
-                <div class="message-time">14:33</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-item">
-            <div class="whatsapp-container">
-              <div class="d-flex align-items-center mb-4">
-                <div class="flex-shrink-0">
-                  <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                    <span class="fw-bold">J</span>
-                  </div>
-                </div>
-                <div class="ms-3">
-                  <h6 class="fw-semibold mb-0">João Santos</h6>
-                  <small class="text-muted">Online agora</small>
-                </div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">Cara, esse método é INCRÍVEL! 🔥</p>
-                <div class="message-time">15:45</div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">2 meses sem crise de ansiedade! Pela primeira vez em anos durmo a noite toda 😴</p>
-                <div class="message-time">15:46</div>
-              </div>
-              <div class="whatsapp-message message-received">
-                <p class="mb-1">Obrigado por devolver minha vida! 🙏❤️</p>
-                <div class="message-time">15:46</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bullets Animados -->
-        <div class="text-center mt-4">
-          <div class="carousel-indicators position-static justify-content-center gap-2">
-            <button type="button" data-bs-target="#whatsappCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-              <span class="animated-bullet" style="animation-delay: 0s;"></span>
-            </button>
-            <button type="button" data-bs-target="#whatsappCarousel" data-bs-slide-to="1" aria-label="Slide 2">
-              <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
-            </button>
-          </div>
-        </div>
+      <!-- Bullets Animados -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem;">
+        <span class="animated-bullet" style="animation-delay: 0s;"></span>
+        <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
+        <span class="animated-bullet" style="animation-delay: 0.6s;"></span>
       </div>
     </div>
   </section>
 
   <!-- ========== CTA FINAL COM GARANTIA ========== -->
-  <section id="comprar" class="py-5 py-md-6 bg-gradient text-white" style="background: linear-gradient(135deg, #ff6348, #ff4757);">
-    <div class="container text-center">
-      <!-- Timer de Urgência -->
-      <div class="urgency-timer mb-5">
-        <p class="fw-semibold mb-0">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" class="fw-bold">23:59:59</span></p>
+  <section id="comprar" style="padding: 4rem 1rem; background: linear-gradient(135deg, #ff6348, #ff4757); color: white; text-align: center;">
+    <!-- Timer de Urgência -->
+    <div class="urgency-timer" style="margin-bottom: 2rem;">
+      <p style="font-weight: 600; margin: 0;">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" style="font-weight: 700;">23:59:59</span></p>
+    </div>
+
+    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Não Deixe a Ansiedade Controlar Sua Vida</h2>
+    <p style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem;">
+      Sua nova realidade está a um clique de distância.
+    </p>
+
+    <!-- Pricing Box -->
+    <div style="background: white; color: #333; border-radius: 20px; padding: 2rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+      <div style="text-decoration: line-through; color: #ef4444; font-size: 1.5rem; margin-bottom: 0.5rem;">R$ 347</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">R$ 47</div>
+      <p style="font-size: 0.875rem; color: #666; margin-bottom: 1.5rem;">86% OFF — Oferta por tempo limitado</p>
+      <div style="text-align: left; font-size: 0.875rem;">
+        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green-500 mr-2"></i> Acesso vitalício</div>
+        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green-500 mr-2"></i> Suporte 24/7</div>
+        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green-500 mr-2"></i> Certificado incluso</div>
+        <div style="display: flex; align-items: center;"><i class="fas fa-check text-green-500 mr-2"></i> Garantia 7 dias</div>
       </div>
+    </div>
 
-      <h2 class="display-4 fw-bold mb-4">Não Deixe a Ansiedade Controlar Sua Vida</h2>
-      <p class="lead mb-5 opacity-90">Sua nova realidade está a um clique de distância.</p>
+    <!-- Botão de Compra -->
+    <button class="btn-warning pulse-btn">
+      <i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA — GARANTIA DE 7 DIAS
+    </button>
 
-      <!-- Pricing Box -->
-      <div class="bg-white text-dark rounded-4 p-4 p-md-5 d-inline-block mb-5 shadow-lg" style="max-width: 320px;">
-        <div class="text-danger text-decoration-line-through fs-5 mb-2">R$ 347</div>
-        <div class="display-5 fw-bold text-success mb-3">R$ 47</div>
-        <p class="text-muted small">86% OFF — Oferta por tempo limitado</p>
-        <div class="text-start small mt-3">
-          <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i> Acesso vitalício</div>
-          <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i> Suporte 24/7</div>
-          <div class="d-flex align-items-center mb-1"><i class="fas fa-check text-success me-2"></i> Certificado incluso</div>
-          <div class="d-flex align-items-center"><i class="fas fa-check text-success me-2"></i> Garantia 7 dias</div>
-        </div>
-      </div>
-
-      <!-- Botão de Compra -->
-      <a href="https://seusite.com/checkout" class="btn btn-lg pulse-btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; font-weight: 800; padding: 1rem 2rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(255,107,53,0.4);">
-        <i class="fas fa-credit-card me-2"></i>COMPRAR AGORA — GARANTIA DE 7 DIAS
-      </a>
-
-      <div class="mt-4 d-flex justify-content-center align-items-center flex-wrap gap-3 small">
-        <span>💳 Cartão</span>
-        <span>📱 PIX</span>
-        <span>⏱️ Acesso Imediato</span>
-      </div>
+    <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.875rem;">
+      <span>💳 Cartão</span>
+      <span>📱 PIX</span>
+      <span>⏱️ Acesso Imediato</span>
     </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="py-4 bg-dark text-white text-center">
-    <div class="container">
-      <p class="mb-1">© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
-      <p class="small opacity-75">Este produto não substitui acompanhamento médico.</p>
-    </div>
+  <footer style="padding: 2rem 1rem; background: #1f2937; color: white; text-align: center;">
+    <p style="margin: 0 0 0.5rem;">© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
+    <p style="font-size: 0.875rem; opacity: 0.75; margin: 0;">Este produto não substitui acompanhamento médico.</p>
   </footer>
 
   <!-- ========== SCRIPTS ========== -->
