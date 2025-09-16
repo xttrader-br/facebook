@@ -3,277 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cervejaria Artesanal | Beer CSS</title>
+    <title>Superando a Ansiedade | Curso Completo</title>
     <link rel="stylesheet" href="https://unpkg.com/beer-css@1.0.0/dist/beer.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #ff9800;
-            --secondary: #795548;
-            --dark: #3e2723;
-            --light: #ffecb3;
+            --primary: #4a90e2;
+            --secondary: #50c878;
+            --accent: #ff6b6b;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #4a90e2, #50c878);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fff8e1;
-            color: #3e2723;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fbfd;
         }
         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1583654683542-9470261308d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
+            background: var(--gradient);
             color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .btn {
-            background-color: var(--primary);
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: 2px solid var(--primary);
+            border: none;
+            cursor: pointer;
+            margin: 10px;
         }
         
-        .btn:hover {
-            background-color: transparent;
-            color: var(--primary);
+        .cta-button:hover {
+            background: #ff5252;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
         }
         
-        .btn-outline {
-            background-color: transparent;
+        .cta-button.secondary {
+            background: rgba(255,255,255,0.2);
             border: 2px solid white;
-            margin-left: 15px;
         }
         
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--dark);
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.3);
         }
         
-        .section {
-            padding: 5rem 2rem;
+        /* Section Styling */
+        section {
+            padding: 80px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--dark);
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
         }
         
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--primary);
+            background: var(--primary);
+            border-radius: 2px;
         }
         
-        .features {
-            background-color: white;
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
         }
         
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
+        /* Problem Section */
+        .problem {
+            background-color: var(--light);
+        }
+        
+        .problem-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .problem-card {
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
             transition: transform 0.3s ease;
-            margin-bottom: 2rem;
+            text-align: center;
         }
         
-        .feature-card:hover {
+        .problem-card:hover {
             transform: translateY(-10px);
         }
         
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .problem-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
         
-        .beers {
-            background-color: #ffecb3;
+        .problem-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
         }
         
-        .beer-card {
+        /* Solution Section */
+        .solution {
+            background: white;
+        }
+        
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .solution-text {
+            flex: 1;
+        }
+        
+        .solution-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .solution-image {
+            flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .solution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .benefits-list {
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Course Content */
+        .course-content {
+            background-color: var(--light);
+        }
+        
+        .modules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .module {
             background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
             transition: all 0.3s ease;
         }
         
-        .beer-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .beer-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+        .module-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         
-        .beer-content {
-            padding: 1.5rem;
+        .module h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
         }
         
+        .module ul {
+            padding-left: 20px;
+        }
+        
+        .module li {
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials */
         .testimonials {
-            background-color: white;
+            background: white;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
         }
         
         .testimonial-card {
-            background: #ffecb3;
+            background: var(--light);
             border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
             position: relative;
         }
         
         .testimonial-card::before {
-            content: '"';
+            content: """;
             position: absolute;
-            top: 10px;
+            top: 20px;
             left: 20px;
             font-size: 5rem;
-            color: rgba(255, 152, 0, 0.2);
+            color: rgba(74, 144, 226, 0.1);
             font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
         }
         
         .client {
             display: flex;
             align-items: center;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
         
-        .client-img {
+        .client-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
+            background: #ddd;
             margin-right: 15px;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
         }
         
-        .contact {
-            background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('https://images.unsplash.com/photo-1598145145867-c87741d1b4a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-control {
+        .client-avatar img {
             width: 100%;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.9);
+            height: 100%;
+            object-fit: cover;
         }
         
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .client-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
         }
         
-        footer {
-            background-color: var(--dark);
+        .client-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: var(--gradient);
             color: white;
-            padding: 3rem 2rem;
             text-align: center;
         }
         
-        .social-icons {
-            margin: 2rem 0;
-        }
-        
-        .social-icons a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            margin: 0 10px;
-            line-height: 50px;
+        .pricing h2, .pricing p {
             color: white;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.05);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: "MAIS POPULAR";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        /* FAQ */
+        .faq {
+            background: var(--light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            background: white;
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 1.5rem;
-            transition: all 0.3s ease;
         }
         
-        .social-icons a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
+        .faq-answer {
+            background: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
         
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+        
+        /* CTA Final */
+        .final-cta {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a2530;
+            color: #aaa;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
-            .btn {
-                display: block;
-                margin: 10px auto;
-                width: 80%;
+            .solution-content {
+                flex-direction: column;
             }
             
-            .btn-outline {
-                margin-left: 0;
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .footer-content {
+                flex-direction: column;
             }
         }
     </style>
@@ -281,122 +594,195 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Cervejaria Artesanal Premium</h1>
-            <p>Descubra sabores únicos e autênticos em cada gole. Produzimos cervejas artesanais com ingredientes selecionados e paixão pelo detalhe.</p>
-            <div>
-                <a href="#beers" class="btn">Conheça nossas cervejas</a>
-                <a href="#contact" class="btn btn-outline">Entre em contato</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section features">
         <div class="container">
-            <div class="section-title">
-                <h2>Por que escolher nossas cervejas?</h2>
-            </div>
-            <div class="row">
-                <div class="col s12 m4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <h3>Ingredientes Naturais</h3>
-                        <p>Utilizamos apenas ingredientes orgânicos e de alta qualidade, sem aditivos artificiais.</p>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3>Processo Artesanal</h3>
-                        <p>Cada cerveja é produzida com técnicas tradicionais e cuidado artesanal.</p>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h3>Qualidade Premiada</h3>
-                        <p>Nossas cervejas já conquistaram diversos prêmios em competições nacionais.</p>
-                    </div>
+            <div class="hero-content">
+                <h1>Supere a Ansiedade e Recupere o Controle da Sua Vida</h1>
+                <p>O curso completo que vai te ensinar técnicas práticas e cientificamente comprovadas para reduzir a ansiedade e viver com mais tranquilidade.</p>
+                <div>
+                    <a href="#pricing" class="cta-button">QUERO ME LIVRAR DA ANSIEDADE AGORA</a>
+                    <a href="#content" class="cta-button secondary">Saiba Mais</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Beers Section -->
-    <section id="beers" class="section beers">
+    <!-- Problem Section -->
+    <section class="problem">
         <div class="container">
             <div class="section-title">
-                <h2>Nossas Cervejas</h2>
+                <h2>Você se identifica com isso?</h2>
+                <p>Milhões de pessoas sofrem com a ansiedade todos os dias. Veja se algum desses sintomas é familiar para você:</p>
             </div>
-            <div class="row">
-                <div class="col s12 m6 l4">
-                    <div class="beer-card">
-                        <div class="beer-img" style="background-image: url('https://images.unsplash.com/photo-1583654683542-9470261308d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
-                        <div class="beer-content">
-                            <h3>IPA Artesanal</h3>
-                            <p>Uma cerveja de alta fermentação com lúpulo selecionado, amargor equilibrado e aroma cítrico intenso.</p>
-                            <span class="tag">7.2% ABV</span>
-                        </div>
-                    </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Palpitações</h3>
+                    <p>Sente o coração acelerado sem motivo aparente?</p>
                 </div>
-                <div class="col s12 m6 l4">
-                    <div class="beer-card">
-                        <div class="beer-img" style="background-image: url('https://images.unsplash.com/photo-1606131833073-37a1bb5b1c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
-                        <div class="beer-content">
-                            <h3>Weissbier</h3>
-                            <p>Cerveja de trigo alemã com notas de banana e cravo, refrescante e de corpo leve.</p>
-                            <span class="tag">5.0% ABV</span>
-                        </div>
-                    </div>
+                <div class="problem-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Pensamentos Intrusivos</h3>
+                    <p>Dificuldade para controlar pensamentos preocupantes?</p>
                 </div>
-                <div class="col s12 m6 l4">
-                    <div class="beer-card">
-                        <div class="beer-img" style="background-image: url('https://images.unsplash.com/photo-1599490519965-3d0f2c7fb9d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
-                        <div class="beer-content">
-                            <h3>Stout Irlandesa</h3>
-                            <p>Cerveja escura com corpo encorpado, notas de café, chocolate e caramelo.</p>
-                            <span class="tag">6.5% ABV</span>
-                        </div>
-                    </div>
+                <div class="problem-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Insônia</h3>
+                    <p>Tem dificuldade para dormir por causa da ansiedade?</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Evitação Social</h3>
+                    <p>Fica ansioso em ambientes sociais ou situações novas?</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
+    <!-- Solution Section -->
+    <section class="solution">
         <div class="container">
             <div class="section-title">
-                <h2>O que nossos clientes dizem</h2>
+                <h2>Existe uma solução eficaz</h2>
+                <p>Nosso curso baseado em evidências científicas vai te ensinar a transformar sua relação com a ansiedade</p>
             </div>
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="testimonial-card">
-                        <p>As cervejas artesanais da Cervejaria Premium são simplesmente excepcionais. A IPA tem um equilíbrio perfeito entre amargor e aroma. Sempre volto para provar novos rótulos!</p>
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>O Método Científico para Superar a Ansiedade</h3>
+                    <p>Desenvolvido por especialistas em saúde mental, nosso curso combina as técnicas mais eficazes da terapia cognitivo-comportamental com práticas de mindfulness e técnicas de respiração.</p>
+                    <ul class="benefits-list">
+                        <li>Reduza significativamente os sintomas de ansiedade em 30 dias</li>
+                        <li>Aprenda a identificar e modificar padrões de pensamento negativo</li>
+                        <li>Desenvolva habilidades práticas para lidar com crises de ansiedade</li>
+                        <li>Melhore sua qualidade de sono e bem-estar geral</li>
+                        <li>Recupere sua confiança em situações sociais</li>
+                    </ul>
+                    <a href="#pricing" class="cta-button">COMECE AGORA</a>
+                </div>
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pessoa relaxada após superar a ansiedade">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section id="content" class="course-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que você vai aprender</h2>
+                <p>Um programa completo dividido em módulos progressivos</p>
+            </div>
+            <div class="modules">
+                <div class="module">
+                    <div class="module-number">1</div>
+                    <h3>Entendendo a Ansiedade</h3>
+                    <ul>
+                        <li>O que é ansiedade e como ela funciona</li>
+                        <li>Tipos de transtornos de ansiedade</li>
+                        <li>Como identificar seus gatilhos</li>
+                        <li>O ciclo da ansiedade</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <div class="module-number">2</div>
+                    <h3>Técnicas de Respiração</h3>
+                    <ul>
+                        <li>Respiração diafragmática</li>
+                        <li>Técnica 4-7-8 para relaxamento</li>
+                        <li>Box breathing para controle imediato</li>
+                        <li>Práticas para dormir melhor</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <div class="module-number">3</div>
+                    <h3>Reestruturação Cognitiva</h3>
+                    <ul>
+                        <li>Identificando pensamentos automáticos</li>
+                        <li>Desafios cognitivos eficazes</li>
+                        <li>Técnicas de reappraisal</li>
+                        <li>Construindo pensamentos mais equilibrados</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <div class="module-number">4</div>
+                    <h3>Exposição Gradual</h3>
+                    <ul>
+                        <li>Hierarquia de medos</li>
+                        <li>Técnicas de exposição segura</li>
+                        <li>Prevenção de resposta de fuga</li>
+                        <li>Construindo tolerância ao desconforto</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <div class="module-number">5</div>
+                    <h3>Práticas de Mindfulness</h3>
+                    <ul>
+                        <li>Meditação guiada para ansiedade</li>
+                        <li>Exercícios de atenção plena</li>
+                        <li>Body scan para relaxamento</li>
+                        <li>Integração diária da prática</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <div class="module-number">6</div>
+                    <h3>Manutenção e Prevenção</h3>
+                    <ul>
+                        <li>Criando um plano de manutenção pessoal</li>
+                        <li>Lidando com recaídas</li>
+                        <li>Autocuidado e rotina saudável</li>
+                        <li>Recursos para suporte contínuo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Histórias de Transformação</h2>
+                <p>Veja o que nossos alunos dizem sobre os resultados obtidos</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Antes do curso, eu mal conseguia sair de casa sem ter um ataque de pânico. Hoje, consigo viajar, trabalhar e aproveitar a vida sem medo constante. O método funciona!"</p>
                         <div class="client">
-                            <div class="client-img" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
-                            <div>
-                                <h4>Carlos Mendes</h4>
-                                <p>Apreciador de cervejas especiais</p>
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente">
+                            </div>
+                            <div class="client-info">
+                                <h4>Mariana Santos</h4>
+                                <p>34 anos, São Paulo</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m6">
-                    <div class="testimonial-card">
-                        <p>Descobri essa cervejaria há alguns meses e desde então não bebo mais outras marcas. A qualidade é impecável e o sabor é único. Recomendo especialmente a Weissbier!</p>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Como professor, a ansiedade social me impediu de dar aulas por anos. Com as técnicas aprendidas, voltei a ensinar com confiança. O curso mudou minha carreira e minha vida!"</p>
                         <div class="client">
-                            <div class="client-img" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
-                            <div>
-                                <h4>Ana Paula Silva</h4>
-                                <p>Sommelière de cervejas</p>
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Cliente">
+                            </div>
+                            <div class="client-info">
+                                <h4>Roberto Almeida</h4>
+                                <p>41 anos, Rio de Janeiro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Tinha insônia há mais de 5 anos por causa da ansiedade. Após aplicar as técnicas de respiração e mindfulness, agora durmo profundamente todas as noites. Gratidão eterna!"</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
+                            </div>
+                            <div class="client-info">
+                                <h4>Camila Oliveira</h4>
+                                <p>29 anos, Belo Horizonte</p>
                             </div>
                         </div>
                     </div>
@@ -405,64 +791,180 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Entre em Contato</h2>
+                <h2>Invista na sua saúde mental hoje</h2>
+                <p>Escolha o plano que melhor se adapta às suas necessidades</p>
             </div>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Seu e-mail" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Assunto">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Sua mensagem" required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
-                </form>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Curso Básico</h3>
+                    <div class="price">R$ 197 <span>/único</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Acesso vitalício ao curso</li>
+                        <li><i class="fas fa-check"></i> 6 módulos completos</li>
+                        <li><i class="fas fa-check"></i> Exercícios práticos</li>
+                        <li><i class="fas fa-check"></i> PDF com todas as técnicas</li>
+                        <li><i class="fas fa-times"></i> Acesso à comunidade</li>
+                        <li><i class="fas fa-times"></i> Suporte personalizado</li>
+                    </ul>
+                    <a href="#" class="cta-button">Comprar Agora</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Curso Completo + Bônus</h3>
+                    <div class="price">R$ 347 <span>/único</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Acesso vitalício ao curso</li>
+                        <li><i class="fas fa-check"></i> 6 módulos completos</li>
+                        <li><i class="fas fa-check"></i> Exercícios práticos</li>
+                        <li><i class="fas fa-check"></i> PDF com todas as técnicas</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade exclusiva</li>
+                        <li><i class="fas fa-check"></i> 2 sessões de suporte personalizado</li>
+                        <li><i class="fas fa-check"></i> Bônus: Meditações guiadas</li>
+                        <li><i class="fas fa-check"></i> Bônus: Plano de manutenção</li>
+                    </ul>
+                    <a href="#" class="cta-button">Comprar Agora</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Parcelado</h3>
+                    <div class="price">12x R$ 32,90</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Acesso vitalício ao curso</li>
+                        <li><i class="fas fa-check"></i> 6 módulos completos</li>
+                        <li><i class="fas fa-check"></i> Exercícios práticos</li>
+                        <li><i class="fas fa-check"></i> PDF com todas as técnicas</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade</li>
+                        <li><i class="fas fa-times"></i> Suporte personalizado</li>
+                    </ul>
+                    <a href="#" class="cta-button">Comprar Agora</a>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre o curso</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Quanto tempo leva para ver resultados?</div>
+                    <div class="faq-answer">
+                        <p>A maioria dos alunos começam a perceber melhorias significativas em 2-3 semanas com prática diária de 15-20 minutos. Resultados mais substanciais são comuns após 30 dias.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Preciso ter conhecimento prévio sobre psicologia?</div>
+                    <div class="faq-answer">
+                        <p>Não, o curso foi desenvolvido para ser acessível a todos. Explicamos todos os conceitos de forma clara e prática, sem jargões técnicos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">O acesso ao curso é vitalício?</div>
+                    <div class="faq-answer">
+                        <p>Sim, uma vez adquirido, você tem acesso vitalício ao conteúdo do curso, incluindo atualizações futuras sem custos adicionais.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Há garantia de satisfação?</div>
+                    <div class="faq-answer">
+                        <p>Sim, oferecemos garantia de 30 dias. Se você não estiver satisfeito com o curso por qualquer motivo, basta solicitar o reembolso que devolvemos 100% do seu investimento.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Como recebo o acesso ao curso?</div>
+                    <div class="faq-answer">
+                        <p>Após a compra, você receberá um e-mail com login e senha para acessar a área de membros onde está todo o conteúdo do curso, incluindo vídeos, PDFs e materiais complementares.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Não deixe a ansiedade controlar sua vida por mais um dia</h2>
+            <p>Invista em você mesmo e comece sua jornada para uma vida mais tranquila e equilibrada agora mesmo.</p>
+            <a href="#pricing" class="cta-button">QUERO SUPERAR MINHA ANSIEDADE AGORA</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <h3>Cervejaria Artesanal Premium</h3>
-            <p>Rua das Cervejas, 123 - Centro Cervejeiro<br>
-            Cidade da Cerveja, Estado - CEP 12345-678</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre o Curso</h3>
+                    <ul>
+                        <li><a href="#">Método</a></li>
+                        <li><a href="#">Instrutores</a></li>
+                        <li><a href="#">Resultados</a></li>
+                        <li><a href="#">Depoimentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">E-books gratuitos</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="#">Central de ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Termos de uso</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; 2023 Cervejaria Artesanal Premium. Todos os direitos reservados.</p>
+            <div class="copyright">
+                <p>&copy; 2023 Superando a Ansiedade. Todos os direitos reservados.</p>
+                <p>Este site não fornece aconselhamento médico. Consulte um profissional de saúde qualificado para diagnósticos e tratamentos.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Efeito de rolagem suave para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
             });
         });
         
-        // Efeito parallax no hero
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sticky header effect
         window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const scrollPosition = window.pageYOffset;
-            hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
