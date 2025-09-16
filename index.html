@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <body class="sans-serif">
 
-  <!-- ========== PRÉ-CARREGAMENTO & OTIMIZAÇÃO ========== -->
+  <!-- PRÉ-CARREGAMENTO & OTIMIZAÇÃO -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -10,16 +10,20 @@
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.12.0/tachyons.min.css">
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- ========== TACHYONS + FONT AWESOME ========== -->
+  <!-- TACHYONS + FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.12.0/tachyons.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <!-- ========== ESTILOS PERSONALIZADOS ========== -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
 
-    /* ===== PRELOADER ===== */
+    /* PRELOADER */
     #preloader {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(135deg, #667eea, #764ba2);
@@ -43,7 +47,7 @@
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
 
-    /* ===== PARALLAX HERO ===== */
+    /* HERO PARALLAX */
     .hero-parallax {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       position: relative; overflow: hidden; min-height: 100vh;
@@ -59,7 +63,7 @@
       50% { transform: translateY(-20px) rotate(180deg); }
     }
 
-    /* ===== GARANTIA DE 7 DIAS — CONTRASTE E ANIMAÇÃO ===== */
+    /* GARANTIA DE 7 DIAS */
     .guarantee-badge {
       position: relative; overflow: hidden;
       background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
@@ -72,7 +76,7 @@
     @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-    /* ===== DEPOIMENTOS WHATSAPP + BULLETS ANIMADOS ===== */
+    /* DEPOIMENTOS WHATSAPP */
     .whatsapp-container {
       background: #f0f2f5; border-radius: 15px; padding: 1.5rem; max-width: 400px; margin: 0 auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -85,19 +89,21 @@
     .message-received { background: #ffffff; border-bottom-left-radius: 4px; margin-left: 0; margin-right: auto; }
     .message-sent { background: #dcf8c6; border-bottom-right-radius: 4px; margin-left: auto; margin-right: 0; }
     .message-time { font-size: 11px; color: #666; margin-top: 4px; text-align: right; }
+    
+    /* BULLETS ANIMADOS */
     .animated-bullet {
       display: inline-block; width: 10px; height: 10px; border-radius: 50%;
       background: #0074d9; margin: 0 4px; animation: pulseBullet 1.5s infinite;
     }
     @keyframes pulseBullet { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.6; } }
 
-    /* ===== BOTÕES DE CONVERSÃO ===== */
+    /* BOTÕES DE CONVERSÃO */
     .pulse-btn {
       animation: pulse 2s infinite;
     }
     @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-    /* ===== URGÊNCIA ===== */
+    /* URGÊNCIA */
     .urgency-timer {
       background: linear-gradient(45deg, #ff4757, #ff3742);
       animation: urgencyPulse 1.5s ease-in-out infinite;
@@ -105,64 +111,14 @@
     }
     @keyframes urgencyPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); } 50% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); } }
 
-    /* ===== RESPONSIVIDADE ===== */
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2.5rem; }
-      .hero-content p { font-size: 1.1rem; padding: 0 1rem; }
-      .whatsapp-message { max-width: 240px; font-size: 0.875rem; }
-      .guarantee-badge { font-size: 0.9rem; padding: 0.5rem 1rem; }
-    }
-
-    /* ===== CUSTOM BUTTONS ===== */
-    .btn-warning {
-      background: linear-gradient(135deg, #ff6b35, #f7931e);
-      color: white; font-weight: 800; padding: 1rem 2rem; border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(255,107,53,0.4); border: none; cursor: pointer;
-      font-size: 1rem; text-decoration: none; display: inline-block;
-    }
-    .btn-warning:hover {
-      background: linear-gradient(135deg, #e55a2b, #e8851a);
-      box-shadow: 0 6px 20px rgba(255,107,53,0.5); transform: translateY(-2px);
-    }
-
-    /* ===== ICONS ===== */
-    .icon-lg { font-size: 2rem; margin-bottom: 1rem; }
-
-    /* ===== CARDS ===== */
+    /* CARDS */
     .card {
       background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: transform 0.2s ease; margin-bottom: 1.5rem;
     }
     .card:hover { transform: translateY(-5px); }
 
-    /* ===== STATS ANIMATED ===== */
-    .stats-animated {
-      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .stat-card {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      animation: fadeInScale 1s ease-out forwards;
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    @keyframes fadeInScale {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* ===== CAROUSEL ===== */
+    /* CAROUSEL */
     .carousel-container {
       position: relative; overflow: hidden; max-width: 450px; margin: 0 auto;
     }
@@ -173,7 +129,7 @@
       min-width: 100%; padding: 0 1rem;
     }
 
-    /* ===== FAQ ===== */
+    /* FAQ */
     .faq-item {
       cursor: pointer;
       transition: background 0.2s ease;
@@ -187,9 +143,30 @@
     .faq-item.active .faq-content {
       max-height: 500px;
     }
+
+    /* BOTÃO DE COMPRA */
+    .one-click-buy {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: white; font-weight: 800; padding: 1rem 2rem; border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.4); border: none; cursor: pointer;
+      font-size: 1rem; text-decoration: none; display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .one-click-buy:hover {
+      background: linear-gradient(135deg, #e55a2b, #e8851a);
+      box-shadow: 0 6px 20px rgba(255,107,53,0.5); transform: translateY(-2px);
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-content p { font-size: 1.1rem; padding: 0 1rem; }
+      .whatsapp-message { max-width: 240px; font-size: 0.875rem; }
+      .guarantee-badge { font-size: 0.9rem; padding: 0.5rem 1rem; }
+    }
   </style>
 
-  <!-- ========== PRELOADER ========== -->
+  <!-- PRELOADER -->
   <div id="preloader">
     <div class="text-center">
       <div class="loader-ring"></div>
@@ -197,7 +174,7 @@
     </div>
   </div>
 
-  <!-- ========== HERO COM PARALLAX ========== -->
+  <!-- HERO COM PARALLAX -->
   <section class="hero-parallax flex items-center justify-center relative">
     <div class="hero-content tc white pa4 z-1" style="padding-top: 15vh;">
       <div class="mw7 center">
@@ -206,7 +183,7 @@
           Transforme Sua Vida
         </h1>
         <p class="f4-l f5 mb5 lh-copy measure center">
-          Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade e recuperarem o controle total de suas vidas
+          Descubra o método comprovado que já ajudou mais de 10.000 pessoas a superarem a ansiedade
         </p>
 
         <!-- Trust indicators -->
@@ -232,7 +209,7 @@
         </div>
 
         <div class="flex flex-column flex-row-l items-center justify-center">
-          <button class="btn-warning pulse-btn mr3-l mb3 mb0-l">
+          <button class="one-click-buy pulse-btn mr3-l mb3 mb0-l">
             <i class="fas fa-rocket mr2"></i>
             <span class="dn db-l">QUERO TRANSFORMAR MINHA VIDA AGORA</span>
             <span class="db dn-l">TRANSFORMAR MINHA VIDA</span>
@@ -249,7 +226,7 @@
     </div>
   </section>
 
-  <!-- ========== PROBLEM SECTION ========== -->
+  <!-- SEÇÃO DE PROBLEMAS -->
   <section class="pv5 bg-light-gray">
     <div class="mw8 center ph3">
       <div class="tc mb5">
@@ -282,7 +259,7 @@
     </div>
   </section>
 
-  <!-- ========== SOLUTION SECTION ========== -->
+  <!-- SEÇÃO DE SOLUÇÃO -->
   <section class="pv5 bg-white">
     <div class="mw8 center ph3">
       <div class="tc mb5">
@@ -357,39 +334,7 @@
     </div>
   </section>
 
-  <!-- ========== STATS SECTION ========== -->
-  <section class="pv5 stats-animated white">
-    <div class="mw8 center ph3">
-      <div class="cf">
-        <div class="fl-25-l fl-50-m fl-100 w-100 pa2">
-          <div class="stat-card tc br2 pa4" style="animation-delay: 0.1s;">
-            <div class="f2 fw7 mb2">10,000+</div>
-            <p class="f5">Vidas Transformadas</p>
-          </div>
-        </div>
-        <div class="fl-25-l fl-50-m fl-100 w-100 pa2">
-          <div class="stat-card tc br2 pa4" style="animation-delay: 0.2s;">
-            <div class="f2 fw7 mb2">95%</div>
-            <p class="f5">Taxa de Sucesso</p>
-          </div>
-        </div>
-        <div class="fl-25-l fl-50-m fl-100 w-100 pa2">
-          <div class="stat-card tc br2 pa4" style="animation-delay: 0.3s;">
-            <div class="f2 fw7 mb2">30</div>
-            <p class="f5">Dias para Ver Resultados</p>
-          </div>
-        </div>
-        <div class="fl-25-l fl-50-m fl-100 w-100 pa2">
-          <div class="stat-card tc br2 pa4" style="animation-delay: 0.4s;">
-            <div class="f2 fw7 mb2">24/7</div>
-            <p class="f5">Suporte Disponível</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== TESTIMONIALS SECTION ========== -->
+  <!-- SEÇÃO DE DEPOIMENTOS -->
   <section class="pv5 bg-light-gray">
     <div class="mw8 center ph3">
       <div class="tc mb5">
@@ -482,9 +427,9 @@
     </div>
   </section>
 
-  <!-- ========== CTA SECTION ========== -->
+  <!-- CTA FINAL -->
   <section class="pv5 bg-gradient-to-r from-orange to-red white relative">
-    <!-- Urgency Timer -->
+    <!-- Timer de Urgência -->
     <div class="urgency-timer mb4">
       <p class="fw6">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" class="fw7">23:59:59</span></p>
     </div>
@@ -505,7 +450,7 @@
         </div>
       </div>
 
-      <button class="btn-warning pulse-btn mb4">
+      <button class="one-click-buy pulse-btn mb4">
         <i class="fas fa-credit-card mr2"></i>COMPRAR AGORA - 86% OFF
       </button>
 
@@ -529,15 +474,10 @@
           <span class="fw6">Acesso vitalício</span>
         </div>
       </div>
-
-      <div class="bg-white-10 br3 pa3 mt5">
-        <p class="f6 mb2">⭐⭐⭐⭐⭐ "Método incrível! Em 2 semanas já sentia a diferença" - Ana Silva</p>
-        <p class="f7 white-70">Mais de 847 pessoas compraram nas últimas 24 horas</p>
-      </div>
     </div>
   </section>
 
-  <!-- ========== FAQ SECTION ========== -->
+  <!-- FAQ -->
   <section class="pv5 bg-light-gray">
     <div class="mw8 center ph3">
       <div class="tc mb5">
@@ -575,76 +515,11 @@
             <p class="f6">Nossa garantia é simples e sem complicações. Se em 7 dias você não sentir que o curso está te ajudando, basta enviar um e-mail e devolvemos 100% do valor investido. Não fazemos perguntas e o reembolso é processado em até 48 horas.</p>
           </div>
         </div>
-        <div class="faq-item bg-white shadow-4 br3 mb3 pa3">
-          <div class="flex items-center pointer" onclick="toggleFaq(this)">
-            <i class="fas fa-user-md red f4 mr2"></i>
-            <h3 class="f5 fw6">Preciso parar meu tratamento médico?</h3>
-            <i class="fas fa-chevron-down ml-auto"></i>
-          </div>
-          <div class="faq-content mt3">
-            <p class="f6">De forma alguma! Nosso curso é complementar ao acompanhamento médico e psicológico. Sempre incentivamos que você mantenha seu tratamento profissional. As técnicas ensinadas são baseadas em evidências científicas e servem como ferramentas adicionais para seu bem-estar.</p>
-          </div>
-        </div>
-        <div class="faq-item bg-white shadow-4 br3 mb3 pa3">
-          <div class="flex items-center pointer" onclick="toggleFaq(this)">
-            <i class="fas fa-graduation-cap orange f4 mr2"></i>
-            <h3 class="f5 fw6">Preciso de conhecimento prévio?</h3>
-            <i class="fas fa-chevron-down ml-auto"></i>
-          </div>
-          <div class="faq-content mt3">
-            <p class="f6">Não é necessário nenhum conhecimento prévio! O curso foi desenvolvido para pessoas comuns, com linguagem clara e exercícios práticos. Começamos do básico e evoluímos gradualmente, sempre com exemplos reais e aplicações do dia a dia.</p>
-          </div>
-        </div>
-        <div class="faq-item bg-white shadow-4 br3 mb3 pa3">
-          <div class="flex items-center pointer" onclick="toggleFaq(this)">
-            <i class="fas fa-headset blue f4 mr2"></i>
-            <h3 class="f5 fw6">Terei suporte durante o curso?</h3>
-            <i class="fas fa-chevron-down ml-auto"></i>
-          </div>
-          <div class="faq-content mt3">
-            <p class="f6">Sim! Oferecemos suporte completo via WhatsApp e e-mail. Nossa equipe está preparada para tirar dúvidas sobre o conteúdo e te apoiar durante toda sua jornada. Também temos uma comunidade exclusiva onde você pode compartilhar experiências com outros alunos.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== GUARANTEE SECTION ========== -->
-  <section class="pv5 bg-white">
-    <div class="mw7 center ph3">
-      <div class="bg-gradient-to-r from-green to-blue pa1 br3">
-        <div class="bg-white pa5 br3">
-          <div class="tc">
-            <i class="fas fa-shield-check f-headline green mb4"></i>
-            <h2 class="f3 fw7 mb4">Garantia Incondicional de 7 Dias</h2>
-            <p class="f5 mb4">Estamos tão confiantes no nosso método que oferecemos uma garantia total. Se em 7 dias você não sentir uma melhora significativa na sua ansiedade, devolvemos 100% do seu dinheiro, sem perguntas.</p>
-            <div class="bg-yellow pa3 br2">
-              <p class="f6 fw6 red">⚡ Sem riscos para você. Todo o risco é nosso!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SOCIAL PROOF POPUP ========== -->
-  <div class="social-proof-popup fixed bottom-2 left-2 z-999 br3 pa3 ba bl-4 b--green bg-white" id="socialProof" style="display: none; max-width: 280px;">
-    <div class="flex items-center">
-      <div class="w2 h2 bg-green white flex items-center justify-center br-100 mr3">
-        <i class="fas fa-user f7"></i>
-      </div>
-      <div class="flex-auto">
-        <p class="fw6 f7 mb1" id="proofName">Maria Silva</p>
-        <p class="f7 gray" id="proofAction">acabou de comprar o curso</p>
-        <p class="f7 green">há 3 minutos - São Paulo, SP</p>
-      </div>
-      <button class="f6 gray hover-black" onclick="hideSocialProof()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="pv5 bg-black white">
     <div class="mw8 center ph3 tc">
       <h3 class="f3 fw7 mb4">Liberte-se da Ansiedade</h3>
@@ -659,7 +534,6 @@
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
   <script>
     // Preloader
     window.addEventListener('load', () => {
@@ -719,43 +593,6 @@
         icon.classList.add('fa-chevron-down');
       }
     }
-
-    // Social Proof
-    const socialProofNames = [
-      'Maria Silva', 'João Santos', 'Ana Costa', 'Pedro Lima', 'Carla Souza',
-      'Lucas Oliveira', 'Fernanda Rocha', 'Rafael Nunes', 'Juliana Alves', 'Marcos Pereira'
-    ];
-    const socialProofCities = [
-      'São Paulo, SP', 'Rio de Janeiro, RJ', 'Belo Horizonte, MG', 'Salvador, BA',
-      'Fortaleza, CE', 'Brasília, DF', 'Curitiba, PR', 'Recife, PE', 'Porto Alegre, RS'
-    ];
-
-    function showSocialProof() {
-      const popup = document.getElementById('socialProof');
-      const nameEl = document.getElementById('proofName');
-      const actionEl = document.getElementById('proofAction');
-      if (popup && nameEl && actionEl) {
-        const randomName = socialProofNames[Math.floor(Math.random() * socialProofNames.length)];
-        const randomCity = socialProofCities[Math.floor(Math.random() * socialProofCities.length)];
-        const randomMinutes = Math.floor(Math.random() * 10) + 1;
-        nameEl.textContent = randomName;
-        actionEl.innerHTML = `acabou de comprar o curso<br><span class="f7 green">há ${randomMinutes} minutos - ${randomCity}</span>`;
-        popup.style.display = 'block';
-        setTimeout(() => {
-          popup.style.display = 'none';
-        }, 5000);
-      }
-    }
-
-    function hideSocialProof() {
-      document.getElementById('socialProof').style.display = 'none';
-    }
-
-    // Initialize social proof
-    setTimeout(() => {
-      showSocialProof();
-      setInterval(showSocialProof, 15000);
-    }, 3000);
   </script>
 
 </body>
