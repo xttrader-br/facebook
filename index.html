@@ -234,4 +234,109 @@
               </div>
             </div>
             <div class="whatsapp-message message-received">
-              <p>Gente
+              <p>Gente, não acredito! 😭</p>
+              <div class="message-time">14:32</div>
+            </div>
+            <div class="whatsapp-message message-received">
+              <p>Faz 3 semanas que comprei o curso e minha vida mudou completamente!</p>
+              <div class="message-time">14:32</div>
+            </div>
+            <div class="whatsapp-message message-received">
+              <p>Antes eu não conseguia nem sair de casa... agora estou fazendo coisas que nem imaginava! 🚀✨</p>
+              <div class="message-time">14:33</div>
+            </div>
+          </div>
+
+          <!-- Bullets Animados -->
+          <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem;">
+            <span class="animated-bullet" style="animation-delay: 0s;"></span>
+            <span class="animated-bullet" style="animation-delay: 0.3s;"></span>
+            <span class="animated-bullet" style="animation-delay: 0.6s;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL COM GARANTIA ========== -->
+  <section class="py-5" style="background: linear-gradient(135deg, #ff6348, #ff4757); color: white; text-align: center;">
+    <!-- Timer de Urgência -->
+    <div class="urgency-timer" style="margin-bottom: 2rem;">
+      <p style="font-weight: 600; margin: 0;">🔥 OFERTA ESPECIAL TERMINA EM: <span id="countdown" style="font-weight: 700;">23:59:59</span></p>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Não Deixe a Ansiedade Controlar Sua Vida</h2>
+          <p style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem;">
+            Sua nova realidade está a um clique de distância.
+          </p>
+
+          <!-- Pricing Box -->
+          <div style="background: white; color: #333; border-radius: 20px; padding: 2rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <div style="text-decoration: line-through; color: #ef4444; font-size: 1.5rem; margin-bottom: 0.5rem;">R$ 347</div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">R$ 47</div>
+            <p style="font-size: 0.875rem; color: #666; margin-bottom: 1.5rem;">86% OFF — Oferta por tempo limitado</p>
+            <div style="text-align: left; font-size: 0.875rem;">
+              <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green mr-2"></i> Acesso vitalício</div>
+              <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green mr-2"></i> Suporte 24/7</div>
+              <div style="display: flex; align-items: center; margin-bottom: 0.5rem;"><i class="fas fa-check text-green mr-2"></i> Certificado incluso</div>
+              <div style="display: flex; align-items: center;"><i class="fas fa-check text-green mr-2"></i> Garantia 7 dias</div>
+            </div>
+          </div>
+
+          <!-- Botão de Compra -->
+          <button class="btn-warning pulse-btn">
+            <i class="fas fa-credit-card mr-2"></i>COMPRAR AGORA — GARANTIA DE 7 DIAS
+          </button>
+
+          <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.875rem;">
+            <span>💳 Cartão</span>
+            <span>📱 PIX</span>
+            <span>⏱️ Acesso Imediato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-4" style="background: #1f2937; color: white; text-align: center;">
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <p style="margin: 0 0 0.5rem;">© 2025 Liberte-se da Ansiedade. Todos os direitos reservados.</p>
+          <p style="font-size: 0.875rem; opacity: 0.75; margin: 0;">Este produto não substitui acompanhamento médico.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('fade-out');
+      }, 1500);
+    });
+
+    // Countdown Timer (simples)
+    function updateCountdown() {
+      const hours = 23, minutes = 59, seconds = 59;
+      document.getElementById('countdown').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    updateCountdown();
+
+    // Animação dos bullets com delay
+    document.addEventListener('DOMContentLoaded', () => {
+      const bullets = document.querySelectorAll('.animated-bullet');
+      bullets.forEach((bullet, index) => {
+        bullet.style.animationDelay = `${index * 0.3}s`;
+      });
+    });
+  </script>
+
+</body>
+</html>
